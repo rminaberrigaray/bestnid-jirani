@@ -1,9 +1,6 @@
 Grupo 28
 
-Integrantes:
-
-- Janeth Merino
-
-- Nélida Aricoma
-
+Integrantes:  
+- Janeth Merino  
+- Nélida Aricoma  
 - Rodrigo Minaberrigaray
