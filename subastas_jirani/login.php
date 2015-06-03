@@ -3,7 +3,7 @@
    if($_POST["nom"]!=null)
    {
    require_once("conexion.php");
-   $consul="select * from usuario_registrado
+   $consul="select * from usuario
    where
    nombre_usuario='".$_POST["nom"]."' and
    contraseña='".$_POST["clave"]."'

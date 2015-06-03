@@ -3,7 +3,7 @@
 	  if ($_POST["user"] != null)
 	  {
 	    require_once("conexion.php");
-	    $consul="SELECT nombre_usuario FROM usuario_registrado where nombre_usuario = '".$_POST["user"]."'";
+	    $consul="SELECT nombre_usuario FROM usuario where nombre_usuario = '".$_POST["user"]."'";
 		
         $result=mysql_query($consul);
 		
@@ -17,14 +17,15 @@
 		else
 		{
 			
-		 $sql=" INSERT INTO usuario_registrado 
-		 VALUES (null,
+		 $sql=" INSERT INTO usuario 
+		 VALUES ('".$_POST["user"]."',
+		 '".$_POST["email"]."',
+		 '".$_POST["clave"]."',
+		 CURDATE(),
+		 null,
 		 '".$_POST["nombre"]."',
 		 '".$_POST["apellido"]."',
-		 '".$_POST["email"]."',
-		 '".$_POST["user"]."',
-		 '".$_POST["clave"]."',
-		 CURTIME())";
+		 null)";
 		 
          $res=mysql_query($sql);
 		 session_start();

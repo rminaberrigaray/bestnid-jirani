@@ -1,29 +1,5 @@
-
-
-<!-- Copyright 2014(c) Nauth WS http://www.nauth.com.ar -->
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-   <title>Subastas Bestnid</title>
-   <link rel="stylesheet" href="estilo.css" type="text/css">
-   
-   <script language="javascript" type="text/javascript" src="lib/funciones.js"></script>
-
-</head>
-<body onLoad="limpiar();">
-
-   <header>
-      <div>
-	  <a href="index.php" title="Subastas Bestnid"> 
-      <img class="imagen" src="imagenes/logo4.png"/>
-	  </a>
-      </div>
-   </header>
- 
- <div class="menu" style="margin-top:0px">
+<?php include("vistaVisitante.html"); ?>
+<div class="menu">
    <ul class="nav">
 	     <li><a href="#">Categoría</a>
 	       <ul>
@@ -37,12 +13,12 @@
 	       </ul>
 		 </li>
         <li><a href="index.php">Inicio</a></li>
-        <li><a href="contacto.php">Contacto</a></li>
 		<li><a href="quienes.php">Quienes somos</a></li>
 		<li><a class="active" href="registrarse.php">Registrarse</a></li>
-		<li><a href="ayuda.php">Ayuda</a></li>		
+		<li><a href="ayuda.php">Ayuda</a></li>			
    </ul>		
 </div>
+
 
 <div class="reg">
 
