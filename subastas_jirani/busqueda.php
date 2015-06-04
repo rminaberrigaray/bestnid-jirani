@@ -1,6 +1,6 @@
 <?php
-   require_once("conexion.php");
-   include("vistaVisitante.html");
+	require_once("conexion.php");
+	include("vistaVisitante.html");
 ?>
 <div class="menu">
    <ul class="nav">
@@ -37,14 +37,15 @@
 	<option id="3" value="nombre_producto">Alfabético</option>
 	<option id="4" value="nombre_usuario">Nombre de usuario</option>
 </select>
+<input type=hidden name="busqueda" value= <?php $_POST["busqueda"] ?>>
 </form>
 </div>
 
 <?php
-     $consul="SELECT * FROM subasta";
+     $consul="SELECT * FROM subasta WHERE nombre_producto like '%".$_POST["busqueda"]."%'";
 	 if(isset($_POST["orden"])) {
 		$consul=$consul." ORDER BY ".$_POST["orden"];
-	 }
+	}
      $result=mysql_query($consul);
      while($subasta=mysql_fetch_array($result))
      {
