@@ -1,33 +1,10 @@
 <?php
-	require_once("conexion.php");
-	include("vistaVisitante.html");
-?>
-<div class="menu">
-   <ul class="nav">
-	     <li><a href="#">Categoría</a>
-	       <ul>
-		     <li><a href="#">Ropa y Accesorios</a></li>
-		     <li><a href="#">Muebles</a></li>
-		     <li><a href="#">Electrónica</a></li>
-			 <li><a href="#">Instrumentos Musicales</a></li>
-			 <li><a href="#">Juegos</a></li>
-			 <li><a href="#">Joyas y Relojes</a></li>
-			 <li><a href="#">Electrodomésticos</a></li>
-	       </ul>
-		 </li>
-        <li><a class="active" href="index.php">Inicio</a></li>
-		<li><a href="quienes.php">Quienes somos</a></li>
-		<li><a href="registrarse.php">Registrarse</a></li>
-		<li><a href="ayuda.php">Ayuda</a></li>
-		<li>
-		<form action="busqueda.php" method="post">
-		<input type="text" placeholder="Búsqueda" name="busqueda">
-		<input type="submit" value="Buscar">
-		</form>
-		</li>
-   </ul>		
-</div>
-
+   require_once("conexion.php");
+   if(isset($_SESSION['nombre_usuario']))
+   { include("vistaRegistrado.html");}
+   
+   else{include("vistaVisitante.html");}
+ ?> 
 <div align=center>
 <form action="" method="post">Ordenar productos 
 <select id="orden" name="orden" onchange="this.form.submit()">

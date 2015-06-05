@@ -1,4 +1,11 @@
-<?php include("vistaVisitante.html"); ?>
+<?php
+   require_once("conexion.php");
+   session_start();
+   if(isset($_SESSION['nombre_usuario']))
+   { include("vistaRegistrado.html");}
+   
+   else{include("vistaVisitante.html");}
+ ?> 
 <div class="menu">
    <ul class="nav">
 	     <li><a href="#">Categoría</a>
@@ -14,7 +21,6 @@
 		 </li>
         <li><a href="index.php">Inicio</a></li>
 		<li><a href="quienes.php">Quienes somos</a></li>
-		<li><a href="registrarse.php">Registrarse</a></li>
 		<li><a class="active" href="ayuda.php">Ayuda</a></li>			
    </ul>		
 </div>

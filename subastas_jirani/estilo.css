@@ -7,9 +7,8 @@ body
     background-repeat:repeat;
     background-attachment:fixed;
     margin-top: -1px;
-	width:100%;
-	position: absolute; 
-	left:-50px; 
+	 
+
 }
 
 header
@@ -44,7 +43,7 @@ fieldset
 {
     width: 2000px;
     margin-left: -269px;
-    margin-top: 11px;
+    margin-top: -7px;
 }
 
 .nav  
@@ -241,12 +240,12 @@ fieldset
 }
 
 .item.box {
-  float: left;
-  border: 1px solid #000;
+  float: left; 
+  border: 1px solid #837373;
   margin: 0 8px 8px 0;
-  border: 1px solid #EC5858;
+  border: 5px solid #B5B2B2;
   border-radius: 5px;
-  color: #686868;
+  color: rgba(117, 38, 38, 1);
 }
 
 .item.box.title;
@@ -255,5 +254,7 @@ fieldset
   padding: 5px 20px;
   height: 30px;
 }
+.subasta
+{margin-left:200px}
 
 
