@@ -1,28 +1,17 @@
 <?php
-
+   include("vistaRegistrado.html");
+   require_once("conexion.php");
    session_start();
-<<<<<<< HEAD
-   if(isset($_SESSION["nombre_usuario"]))
-   { 
-	include("vistaRegistrado.html");
-=======
    if(($_SESSION["nombre_usuario"]))
     {
 ?>
- 
-</body>  
-</html>
 <?php
->>>>>>> origin/master
    }
-   
-   else     
-       {
+   else
+   {
 	   echo "<script type='text/javascript'>
 	   alert('Usted no esta logueado');
 	   window.location='index.php';
 	   </script>";
-	   }
-	   
-   
+   }
 ?>
