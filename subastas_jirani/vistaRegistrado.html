@@ -1,0 +1,60 @@
+
+<!-- Copyright 2014(c) Nauth WS http://www.nauth.com.ar -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+   <title>Subastas Bestnid</title>
+   <link rel="stylesheet" href="estilo.css" type="text/css">
+   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+   <script language="javascript" type="text/javascript" src="lib/funciones.js"></script>
+ 
+</head>
+<body onLoad="limpiar();">
+	<div class="contenedor">
+   <header>
+   <div>
+   <h4 style=" margin-left: 800px;
+    margin-top: -2px"><?php echo $_SESSION["nombre_usuario"]; ?>&nbsp &nbsp &nbsp <a href="salir.php">Cerrar Sesión</a>
+	</div>
+      <div>
+	  <a href="index.php" title="Subastas Bestnid"> 
+      <img class="imagen" src="imagenes/logo4.png" style="margin-top: -25px" />
+	  </a>
+      </div>
+   </header> 
+
+ <div class="menu" style="margin-top:0px">
+   <ul class="nav">
+	     <li><a href="#">Categoría</a>
+	       <ul>
+		     <li><a href="#">Ropa y Accesorios</a></li>
+		     <li><a href="#">Muebles</a></li>
+		     <li><a href="#">Electrónica</a></li>
+			 <li><a href="#">Instrumentos Musicales</a></li>
+			 <li><a href="#">Juegos</a></li>
+			 <li><a href="#">Joyas y Relojes</a></li>
+			 <li><a href="#">Electrodomésticos</a></li>
+	       </ul>
+		 </li>
+        <li><a class="active" href="index.php">Inicio</a></li>
+        <li><a href="contacto.php">Contacto</a></li>
+		
+		<li><a href="subastar.php">Subastar</a></li>
+		<li><a href="ayuda.php">Ayuda</a></li>	
+        
+		<li>
+		<div class="buscar"> 
+		<form action="busqueda.php" method="post">
+		<input type="text" placeholder="Búsqueda" name="busqueda">
+		<input type="submit" value="Buscar">
+		</form>
+		</div>
+		</li>		
+   </ul>		
+</div>
+<br>
+</body>  
+</html>  
