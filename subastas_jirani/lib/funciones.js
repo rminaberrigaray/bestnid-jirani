@@ -6,6 +6,7 @@
       alert("Por favor ingrese su usuario");
       f.nom.focus();
       return false;
+	
    }
    if(f.clave.value == 0)
    {
@@ -13,7 +14,7 @@
       f.clave.focus();
       return false;
    }
-   f.submit();
+  
 }
 
 function limpiar()

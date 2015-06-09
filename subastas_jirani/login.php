@@ -19,7 +19,7 @@
    else
    {
 	   $_SESSION["nombre_usuario"]=$_POST["nom"];
-	   header("Location: perfil.php");
+	   header("Location: index.php");
    }
 	   }
 	   else

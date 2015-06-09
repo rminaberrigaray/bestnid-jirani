@@ -22,18 +22,22 @@
 		 '".$_POST["email"]."',
 		 '".$_POST["clave"]."',
 		 CURDATE(),
-		 null,
 		 '".$_POST["nombre"]."',
 		 '".$_POST["apellido"]."',
 		 null)";
 		 
          $res=mysql_query($sql);
+		 
+		 $sql="INSERT INTO usuario_registrado
+		 VALUES ('".$_POST["user"]."')";
+		 $res=mysql_query($sql);
+		 
 		 session_start();
          $_SESSION["nombre_usuario"]=$_POST["user"];
 	   
          echo "<script type=''>
 	     alert('Se ha registrado exitosamente');
-	     window.location='perfil.php';
+	     window.location='index.php';
 		 echo 
          </script>";	  
 	      

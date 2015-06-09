@@ -1,32 +1,36 @@
 body
 {
-    max-height: 1000px;
-    min-height: 1000px;
-    min-width: 1400px;
-    background-image:url(imagenes/fondo6.jpg);
-    background-repeat:repeat;
-    background-attachment:fixed;
-    margin-top: -1px;
-	width:100%;
-	position: absolute; 
-	left:-50px; 
+background-image:url(imagenes/fondo6.jpg);
+background-repeat:repeat;
+background-attachment:fixed;
+}
+
+.contenedor
+{
+width:100%;
+max-width:1000px;
+margin: 0 auto;
+
 }
 
 header
 {
     background-color: #DA1F38;
-    max-width:100px;
-    min-width:1100px;
-    margin-left:180px;
+	width:100%;
+	margin-top:-10px;
+	
+ 
 }
 
-fieldset
+.formulario
 {
-    margin-left: 911px;
-    margin-top: -131px;
-    margin-right: 200px;
-    font-size: 16px;
-    font-family: Tahoma;
+  
+  margin-left: 64%;
+  margin-top: -131px;
+  margin-right: 50px;
+  font-size: 16px;
+  font-family: Tahoma;
+ 
 }
 
 .imagen
@@ -36,39 +40,35 @@ fieldset
 }
 
 #usuario
-{
-    margin-left:27px;
-}
+{  margin-left: 27px;}
 
 .menu
 {
-    width: 2000px;
-    margin-left: -269px;
-    margin-top: 11px;
+     width: 100%;
+    margin-top: -7px;
 }
 
 .nav  
 {
-    border-radius: 5px;
-    list-style-type: none;
-    margin: 0 auto; /* si queremos centrarlo */
-    padding: 3px;
-    /* la altura y su ancho dependerán de los textos */
-    height: 46px; 
-    width: 1094px;
+ 
+   border-radius: 4px;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 3px;
+  height: 45px;
+ 
     /* el color de fondo */
-    background: #555;
+  
+	background: #555;
     background: -moz-linear-gradient(#555,#222);
     background: -webkit-linear-gradient(#555,#222);
     background: -o-linear-gradient(#555,#222);
     background: -ms-linear-gradient(#555,#222);
     background: linear-gradient(#555,#222);
+
 }
 
-.nav  br 
-{ 
-    display:none; 
-}
+
 
   /* cada item del menu */
 .nav  li 
@@ -77,8 +77,6 @@ fieldset
     float: left; /* la lista se ve horizontal */
     height: 40px;
     list-style: none;
-    margin: 0;
-    padding: 0;
     position: relative;
 }
 
@@ -195,7 +193,7 @@ fieldset
     box-shadow: 0px 5px 10px #F3EBEB, 0 0 0 10px #F57878 inset;	
     line-height: 30px;
     max-width: 500px;
-    margin-left: 425px;
+    margin-left: 225px;
 }
 
 .reg form input:invalid 
@@ -227,26 +225,25 @@ fieldset
    color: #F74040;
 }
 
-
 .products {
   width: 950px;
   margin: 0 -23px 0 -15px;
-  margin-left: 183px;
+  margin-left: 25px;
   margin-top: 20px;
 }
 
 .item.box.normal {
-  width: 300px;
-  height: 350px;
+   width: 300px;
+  height: 370px;
 }
 
 .item.box {
-  float: left;
-  border: 1px solid #000;
-  margin: 0 8px 8px 0;
-  border: 1px solid #EC5858;
+  float: left; 
+  border: 1px solid #837373;
+  margin: 0 6px 9px 0;
+  border: 5px solid #B5B2B2;
   border-radius: 5px;
-  color: #686868;
+  color: rgba(117, 38, 38, 1);
 }
 
 .item.box.title;
@@ -255,5 +252,9 @@ fieldset
   padding: 5px 20px;
   height: 30px;
 }
+.subasta
+{margin-left:200px}
 
-
+.buscar
+{ margin-top: 11px;
+  padding-left: 20px;}

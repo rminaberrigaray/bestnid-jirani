@@ -10,14 +10,14 @@
        {include("vistaVisitante.html");}
   
  ?> 
-
-<div align=center style="margin-top: 22px;">
+<div align="center">
 <form action="" method="post">Ordenar productos 
 <select id="order" name="orden" onchange="this.form.submit()">
 	<option id="0" value="fecha_inicio desc">Lo más nuevo</option>
 	<option id="1" value="fecha_inicio">Lo más antiguo</option>
 	<option id="2" value="nombre_producto">Alfabético</option>
 </select>
+<input type="hidden" name="busqueda" value= <?php $_POST["busqueda"] ?>>
 
 <?php if(isset($_POST["orden"])) { ?>
 <script type="text/javascript">
@@ -36,12 +36,15 @@
 </div>
 
 <?php
-     $consul="SELECT s.nombre_producto, s.id_imagen, i.id_imagen, i.imagen, s.fecha_inicio, s.fecha_fin
+
+   $consul="SELECT s.nombre_producto, s.id_imagen, i.id_imagen, i.imagen, s.fecha_inicio, s.fecha_fin
      FROM subasta s
-     INNER JOIN imagen i ON s.id_imagen = i.id_imagen";
+     INNER JOIN imagen i ON s.id_imagen = i.id_imagen
+	 WHERE s.nombre_producto like '%".$_POST["busqueda"]."%'";
+
 	 if(isset($_POST["orden"])) {
 		$consul=$consul." ORDER BY ".$_POST["orden"];
-	 }
+	}
      $result=mysql_query($consul);
      while($subasta=mysql_fetch_array($result))
      {
@@ -54,8 +57,8 @@
 	 </div>
 	 <br>
 	 <div class="photo">
-	   <a href="#"></a>
-	    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($subasta["imagen"]).'" style="margin-left: 25px;"/>'; 
+	  <a href="#"></a>
+	   <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($subasta["imagen"]).'" style="margin-left: 25px;"/>'; 
 	     ?>
 	 </div>
 	 <br>
@@ -75,6 +78,5 @@
 <?php
 	 }
 ?>
-</div>
 </body>  
 </html>

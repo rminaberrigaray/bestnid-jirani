@@ -4,15 +4,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+   <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
    <title>Subastas Bestnid</title>
    <link rel="stylesheet" href="estilo.css" type="text/css">
-   
+   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
    <script language="javascript" type="text/javascript" src="lib/funciones.js"></script>
  
 </head>
-<body onLoad="limpiar();">
 
+<body onLoad="limpiar();">
+   <div class="contenedor">
    <header>
       <div>
 	  <a href="index.php" title="Subastas Bestnid"> 
@@ -20,9 +21,9 @@
 	  </a>
       </div>
    </header>
- 
- <form name="form" action="login.php" method="post" >
- <fieldset> 
+  <div class="formulario">
+  <form name="form" action="login.php" method="post" >
+  <fieldset> 
    <legend> Iniciar Sesi&oacute;n:</legend>
    
    <label id="usuario">Usuario</label>
@@ -30,8 +31,35 @@
    
    <label>Contraseña</label>
    <input type="password"  name="clave" /><br>
-   <input type="button" value="Ingresar" title="Ingresar" onClick="validarlog()" style="margin-left:85px" />
-   
- </fieldset>  
-</form>
+   <input type="submit" value="Ingresar" title="Ingresar" onClick="validarlog()" style="margin-left:85px" />
+   <input type="button" value="Registrarse" onclick="location.href='registrarse.php'"><br>
+   <a href="#" style="font-size: 14px">¿He olvidado mi contraseña?</a>    
+  </fieldset>  
+  </form>
+  </div>
 <br>
+<div class="menu">
+   <ul class="nav">
+	     <li><a href="#">Categoría</a>
+	       <ul>
+		     <li><a href="#">Ropa y Accesorios</a></li>
+		     <li><a href="#">Muebles</a></li>
+		     <li><a href="#">Electrónica</a></li>
+			 <li><a href="#">Instrumentos Musicales</a></li>
+			 <li><a href="#">Juegos</a></li>
+			 <li><a href="#">Joyas y Relojes</a></li>
+			 <li><a href="#">Electrodomésticos</a></li>
+	       </ul>
+		 </li>
+        <li><a class="active" href="index.php">Inicio</a></li>
+		<li><a href="quienes.php">Quienes somos</a></li>
+		<li><a href="ayuda.php">Ayuda</a></li>
+		<li>
+		<div class="buscar">
+		<form action="busqueda.php" method="post">
+		<input type="text" placeholder="Búsqueda" name="busqueda">
+		<input type="submit" value="Buscar">
+		</form>
+		</div>
+		</li>
+   </ul>		
