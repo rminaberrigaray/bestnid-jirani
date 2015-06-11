@@ -16,3 +16,7 @@
 	   
    
 ?>
+<script type="text/javascript">
+	var a = document.getElementById("contacto");
+	a.className = "active";
+</script>

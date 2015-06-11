@@ -6,6 +6,11 @@
   {
 ?>
 
+<script type="text/javascript">
+	var a = document.getElementById("subastar");
+	a.className = "active";
+</script>
+
 
 <div class="subasta">
 

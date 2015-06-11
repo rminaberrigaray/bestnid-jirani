@@ -252,8 +252,9 @@ header
   padding: 5px 20px;
   height: 30px;
 }
-.subasta
-{margin-left:200px}
+.subasta {
+	margin-left:0px
+}
 
 .buscar
 { margin-top: 11px;

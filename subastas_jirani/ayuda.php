@@ -10,6 +10,10 @@
        {include("vistaVisitante.html");}
   
 ?> 
+<script type="text/javascript">
+	var a = document.getElementById("ayuda");
+	a.className = "active";
+</script>
 <html>
 <body>
 </body>  

@@ -17,7 +17,7 @@
 	<option id="1" value="fecha_inicio">Lo más antiguo</option>
 	<option id="2" value="nombre_producto">Alfabético</option>
 </select>
-<input type="hidden" name="busqueda" value= <?php $_POST["busqueda"] ?>>
+<input type="hidden" name="busqueda" value= <?php echo $_POST["busqueda"] ?>>
 
 <?php if(isset($_POST["orden"])) { ?>
 <script type="text/javascript">
@@ -45,6 +45,9 @@
 	 if(isset($_POST["orden"])) {
 		$consul=$consul." ORDER BY ".$_POST["orden"];
 	}
+	else {
+		$consul=$consul." ORDER BY fecha_inicio desc";
+	 }
      $result=mysql_query($consul);
      while($subasta=mysql_fetch_array($result))
      {

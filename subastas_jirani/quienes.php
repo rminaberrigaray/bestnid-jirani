@@ -12,3 +12,8 @@
 	   
    
 ?>
+
+<script type="text/javascript">
+	var a = document.getElementById("quienes");
+	a.className = "active";
+</script>

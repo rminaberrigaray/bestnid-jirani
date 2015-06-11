@@ -10,6 +10,10 @@
        {include("vistaVisitante.html");}
   
  ?> 
+<script type="text/javascript">
+	var a = document.getElementById("index");
+	a.className = "active";
+</script>
 
 <div align=center style="margin-top: 22px;">
 <form action="" method="post">Ordenar productos 
@@ -41,6 +45,9 @@
      INNER JOIN imagen i ON s.id_imagen = i.id_imagen";
 	 if(isset($_POST["orden"])) {
 		$consul=$consul." ORDER BY ".$_POST["orden"];
+	 }
+	 else {
+		$consul=$consul." ORDER BY fecha_inicio desc";
 	 }
      $result=mysql_query($consul);
      while($subasta=mysql_fetch_array($result))
