@@ -55,14 +55,14 @@
 
 <div class="products">
    <div class="item box normal cent active" id="item_box_3994">
-     <div class="title"><?php echo ($subasta["nombre_producto"]); ?> 
-	 <a href="#"></a>
+     <div style="center"><?php echo ($subasta["nombre_producto"]); ?> 
 	 </div>
 	 <br>
-	 <div class="photo">
-	  <a href="#"></a>
-	   <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($subasta["imagen"]).'" style="margin-left: 25px;"/>'; 
-	     ?>
+	 <div>
+	   <a href="verProducto.php?idSubasta=<?php echo $subasta["id_subasta"];?>">
+	    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($subasta["imagen"]).'" style="margin-left: 25px;
+		width: 170px;height: 150px;"/>'; 
+	     ?></a>
 	 </div>
 	 <br>
 	 <div class="inicio">Inicio de subasta: <?php 
@@ -75,9 +75,9 @@
 		echo date_format($fecha, 'd-m-Y H:i:s');
 	 ?> </div>
 	 <br>
-	 <input style="margin-left:110px"type="button" value="Ofertar" title="Ofertar" onClick="ofertar.php"/>
+	 <input style="margin-left:80px" type="button"  class="button" value="Ofertar" title="Ofertar" onClick="ofertar.php">
    </div>	  
-</div>	 
+</div>
 <?php
 	 }
 ?>

@@ -142,10 +142,15 @@ function validarReg()
 	   }
 	   f.submit();
    }
+
 function eliminarSubasta(id)
 {
    if (confirm("Realmente desea eliminar la subasta?"))
    {
       window.location="eliminarSubasta.php?idSubasta="+id;
    }
+}
+
+function verificarSubasta() {
+	
 }

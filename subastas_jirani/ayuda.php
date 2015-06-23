@@ -15,6 +15,5 @@
 	a.className = "active";
 </script>
 <html>
-<body>
 </body>  
 </html>
