@@ -90,7 +90,7 @@ header
     font-size: 13px;
     font-weight: bold;
     line-height: 28px;
-    padding: 0 45px;
+    padding: 0 30px; /* para ajustar cada item*/
     margin: 6px 0;
     text-decoration: none;
     /* animamos el cambio de color de los textos */
@@ -233,7 +233,7 @@ header
 }
 
 .item.box.normal {
-   width: 300px;
+   width: 220px;
   height: 370px;
 }
 
@@ -247,7 +247,7 @@ header
 }
 
 .item.box.title;
-.item.box.descrip  {
+.item.box.descrip{
   color: #686868;
   padding: 5px 20px;
   height: 30px;
@@ -259,3 +259,36 @@ header
 .buscar
 { margin-top: 11px;
   padding-left: 20px;}
+
+.encabezado
+{
+   background-color:#676767;
+   color:#FFFFFF;
+   font-weight:bold;
+   text-align: center;
+}
+
+.button
+  {
+  border: 1px solid #040303;
+  font-size: 18px;
+  font-family: Arial, Verdana;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  background: #DA1F38;
+  background: linear-gradient(left, #4972B5, #618ACB);
+  background: -moz-linear-gradient(left, #4972B5, #618ACB);
+  background: -webkit-linear-gradient(left, #2E2929, #DA1F38);
+  background: -o-linear-gradient(left, #4972B5, #618ACB);
+  color: #FFFFFF;
+  }
+.registros {
+   color: rgba(117, 38, 38, 1);
+}
+
