@@ -57,7 +57,7 @@
 	 <br>
 	 
 	 <label>Imagen:</label><br>
-	 <input name="imagen" type="file"/> <br>
+	 <input name="imagen" type="file" accept="image/*" /> <br>
 	 <div id="div_imagen"></div>
 	 <br>
 	

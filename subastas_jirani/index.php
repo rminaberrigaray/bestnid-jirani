@@ -61,7 +61,7 @@
 	 <br>
 	 <div>
 	   <a href="verProducto.php?idSubasta=<?php echo $subasta["id_subasta"];?>">
-	    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($subasta["imagen"]).'" style="margin-left: 25px;
+	    <?php echo '<img src="data:image/*;base64,'.base64_encode($subasta["imagen"]).'" style="margin-left: 25px;
 		width: 170px;height: 150px;"/>'; 
 	     ?></a>
 	 </div>

@@ -151,6 +151,82 @@ function eliminarSubasta(id)
    }
 }
 
-function verificarSubasta() {
-	
+function sumar_dias(d, fecha) {
+	var Fecha = new Date();
+	var sFecha = fecha || (Fecha.getDate() + "/" + (Fecha.getMonth() +1) + "/" + Fecha.getFullYear());
+	var sep = sFecha.indexOf('/') != -1 ? '/' : '-'; 
+	var aFecha = sFecha.split(sep);
+	var fecha = aFecha[2]+'/'+aFecha[1]+'/'+aFecha[0];
+	fecha= new Date(fecha);
+	fecha.setDate(fecha.getDate()+parseInt(d));
+	var anno=fecha.getFullYear();
+	var mes= fecha.getMonth()+1;
+	var dia= fecha.getDate();
+	mes = (mes < 10) ? ("0" + mes) : mes;
+	dia = (dia < 10) ? ("0" + dia) : dia;
+	var fechaFinal = anno+sep+mes+sep+dia;
+	return (fechaFinal);
 }
+
+function valida_fecha(fecha) {
+	var fec = new Date(Date.parse(fecha.replace(/-/g, "/")));
+	var fec_min = sumar_dias(15);
+	fec_min = Date.parse(fec_min);
+	var fec_max = sumar_dias(30);
+	fec_max = Date.parse(fec_max);
+	if ((fec >= fec_min) && (fec <= fec_max)) return true;
+	else return false;
+}
+
+function verificarSubasta() {
+	var f = document.subasta;
+	var v = true;
+	
+	/* valida campo nombre */
+	if (f.nombre.value == 0) {
+		document.getElementById("div_nombre").innerHTML="<font size=3 color='#FF0000'>El campo Nombre está vacío</font>";
+		f.nombre.focus();
+		v = false;
+	}
+	else document.getElementById("div_nombre").innerHTML="";
+	
+	/* valida campo descripcion */
+	if (f.descripcion.value == 0) {
+		document.getElementById("div_descripcion").innerHTML="<font size=3 color='#FF0000'>El campo Descripción está vacío</font>";
+		f.descripcion.focus();
+		v = false;
+	}
+	else document.getElementById("div_descripcion").innerHTML="";
+	
+	/* valida campo categoria */
+	if (f.categoria.value == "0") {
+		document.getElementById("div_categoria").innerHTML="<font size=3 color='#FF0000'>Debe seleccionar una categoría, seleccione \"Otros\" si no encuentra la categoría adecuada</font>";
+		f.categoria.focus();
+		v = false;
+	}
+	else document.getElementById("div_categoria").innerHTML="";
+	
+	/* valida campo imagen */
+	if (f.imagen.value == 0) {
+		document.getElementById("div_imagen").innerHTML="<font size=3 color='#FF0000'>Debe seleccionar una imagen del producto</font>";
+		f.imagen.focus();
+		v = false;
+	}
+	else document.getElementById("div_imagen").innerHTML="";
+	
+	/* valida fecha y hora */
+	if (!valida_fecha(f.fecha_fin.value)) {
+		document.getElementById("div_fecha").innerHTML="<font size=3 color='#FF0000'>La fecha de fin debe situarse entre 15 a 30 días a partir de la fecha</font>";
+		f.fecha_fin.focus();
+		v = false;
+	}
+	else document.getElementById("div_fecha").innerHTML="";
+	if (v) f.submit();
+	else return false;
+}
+
+
+
+
+
+

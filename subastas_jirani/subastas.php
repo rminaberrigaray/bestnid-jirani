@@ -23,7 +23,7 @@ WHERE s.nombre_usuario = '".$_SESSION["nombre_usuario"]."'
 ORDER BY s.fecha_inicio desc";
 
 $result=mysql_query($consul);
-if ($result != false) {
+if (($result != false) && (mysql_num_rows($result) > 0)) {
 ?>
 <table width="800px" align="left" border="1">
 
