@@ -76,7 +76,10 @@
 		echo date_format($fecha, 'd-m-Y H:i:s');
 	 ?> </div>
 	 <br>
-	 <input style="margin-left:80px" type="button"  class="button" value="Ofertar" title="Ofertar" onClick="ofertar.php">
+	 <form method="post" action="ofertar.php">
+	 <input type="hidden" name="id_subasta" value=<?php echo $subasta["id_subasta"]; ?>>
+	 <input style="margin-left:80px" type="submit"  class="button" value="Ofertar" title="Ofertar">
+	 </form>
    </div>	  
 </div>	 
 <?php

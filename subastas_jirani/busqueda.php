@@ -37,7 +37,7 @@
 
 <?php
 
-   $consul="SELECT s.nombre_producto, s.id_imagen, i.id_imagen, i.imagen, s.fecha_inicio, s.fecha_fin
+   $consul="SELECT *
      FROM subasta s
      INNER JOIN imagen i ON s.id_imagen = i.id_imagen
 	 WHERE s.nombre_producto like '%".$_POST["busqueda"]."%'";
@@ -60,7 +60,7 @@
 	 <br>
 	 <div>
 	   <a href="verProducto.php?idSubasta=<?php echo $subasta["id_subasta"];?>">
-	    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($subasta["imagen"]).'" style="margin-left: 25px;
+	    <?php echo '<img src="data:image/*;base64,'.base64_encode($subasta["imagen"]).'" style="margin-left: 25px;
 		width: 170px;height: 150px;"/>'; 
 	     ?></a>
 	 </div>
@@ -75,8 +75,11 @@
 		echo date_format($fecha, 'd-m-Y H:i:s');
 	 ?> </div>
 	 <br>
-	 <input style="margin-left:80px" type="button"  class="button" value="Ofertar" title="Ofertar" onClick="ofertar.php">
-   </div>	  
+	 <form method="post" action="ofertar.php">
+	 <input type="hidden" name="id_subasta" value=<?php echo $subasta["id_subasta"]; ?>>
+	 <input style="margin-left:80px" type="submit"  class="button" value="Ofertar" title="Ofertar">
+	 </form>
+   </div>
 </div>
 <?php
 	 }

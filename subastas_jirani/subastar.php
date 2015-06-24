@@ -28,16 +28,17 @@
    <br>
    <form enctype="multipart/form-data" name="subasta" method="post" action="addSubasta.php">
      <label>Nombre del producto:</label><br>
-     <input type="text" name="nombre" ><br>
 	 <div id="div_nombre"></div>
+     <input type="text" name="nombre" ><br>
 	 <br>
 	
      <label>Descripción:</label><br>
-     <textarea type="text" name="descripcion" cols="50" rows="5" maxlength="500"></textarea><br>
 	 <div id="div_descripcion"></div>
+     <textarea type="text" name="descripcion" cols="50" rows="5" maxlength="500"></textarea><br>
 	 <br>
 	 
      <label>Categoría:</label> <br>
+	 <div id="div_categoria"></div>
      <select name="categoria">
      <option value="0">Seleccione una categoria</option>
      <?php
@@ -53,18 +54,17 @@
 	
      ?>
      </select> <br>
-	 <div id="div_categoria"></div>
 	 <br>
 	 
 	 <label>Imagen:</label><br>
-	 <input name="imagen" type="file" accept="image/*" /> <br>
 	 <div id="div_imagen"></div>
+	 <input name="imagen" type="file" accept="image/*" /> <br>
 	 <br>
 	
 	 <label>Fecha y hora de fin:</label><br>
+	 <div id="div_fecha"></div>
 	 <script>DateInput('fecha_fin', true, 'YYYY-MM-DD', '<?php echo date("Y-M-d", strtotime("+15 days")) ?>')</script>
 	 <input name="hora" type="time" value="00:00"> <br>
-	 <div id="div_fecha"></div>
 	 <br>
 	 <hr>
 	 <input type="button" value="Cancelar" title="Cancelar" onClick="history.back();" />

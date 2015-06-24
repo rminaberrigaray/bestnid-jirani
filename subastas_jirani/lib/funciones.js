@@ -53,7 +53,7 @@ function validarReg()
 	   var f = document.registro;
 	   if(f.nombre.value == 0)
        {
-	     document.getElementById("div_name").innerHTML="<font size=3 color='#FF0000'>El campo Nombre está vacío</font>";
+	     document.getElementById("div_name").innerHTML="<div style=\"font-size:13px; color:red\">El campo Nombre está vacío</div>";
          f.nombre.focus();
          return false;
        }
@@ -65,7 +65,7 @@ function validarReg()
 	   if(!valida_cadena(f.nombre.value))
 	   {
 	   
-	     document.getElementById("div_name").innerHTML="<font size=3 color='#FF0000'>Por favor ingrese solo letras para su nombre</font>";
+	     document.getElementById("div_name").innerHTML="<div style=\"font-size:13px; color:red\">Por favor ingrese solo letras para su nombre</div>";
          f.nombre.value="";
 	     f.nombre.focus();
          return false;
@@ -77,7 +77,7 @@ function validarReg()
 	   
 	   if(f.apellido.value == 0)
        {
-	     document.getElementById("div_apellido").innerHTML="<font size=3 color='#FF0000'>El campo Apellido está vacío</font>";
+	     document.getElementById("div_apellido").innerHTML="<div style=\"font-size:13px; color:red\">El campo Apellido está vacío</div>";
          f.apellido.focus();
          return false;
        }
@@ -88,7 +88,7 @@ function validarReg()
 	   
 	   if(!valida_cadena(f.apellido.value))
 	   {	   
-	     document.getElementById("div_apellido").innerHTML="<font size=3 color='#FF0000'>Por favor ingrese solo letras para su apellido</font>";
+	     document.getElementById("div_apellido").innerHTML="<div style=\"font-size:13px; color:red\">Por favor ingrese solo letras para su apellido</div>";
          f.apellido.value="";
 	     f.apellido.focus();
          return false;
@@ -100,7 +100,7 @@ function validarReg()
 	   
 	   if(f.email.value == 0)
        {
-	     document.getElementById("div_mail").innerHTML="<font size=3 color='#FF0000'>Por favor ingrese su E-mail</font>";
+	     document.getElementById("div_mail").innerHTML="<div style=\"font-size:13px; color:red\">Por favor ingrese su E-mail</div>";
          f.email.focus();
          return false;
        }
@@ -110,7 +110,7 @@ function validarReg()
 	   }
 	   if(!valida_correo(f.email.value))
 	   {
-	     document.getElementById("div_mail").innerHTML="<font size=3 color='#FF0000'>Por favor ingrese un correo válido</font>";
+	     document.getElementById("div_mail").innerHTML="<div style=\"font-size:13px; color:red\">Por favor ingrese un correo válido</div>";
 	     f.email.value="";
 	     f.email.focus();
          return false;   
@@ -122,7 +122,7 @@ function validarReg()
 	     
 	   if(f.user.value == 0)
        {
-	     document.getElementById("div_user").innerHTML="<font size=3 color='#FF0000'>El campo Usuario está vacío</font>";
+	     document.getElementById("div_user").innerHTML="<div style=\"font-size:13px; color:red\">El campo Usuario está vacío</div>";
          f.user.focus();
          return false;
        }
@@ -132,7 +132,7 @@ function validarReg()
 	   }
 	   if(f.clave.value == 0)
        {
-	     document.getElementById("div_clave").innerHTML="<font size=3 color='#FF0000'>El campo Clave está vacío</font>";
+	     document.getElementById("div_clave").innerHTML="<div style=\"font-size:13px; color:red\">El campo Clave está vacío</div>";
          f.clave.focus();
          return false;
        }
@@ -184,7 +184,7 @@ function verificarSubasta() {
 	
 	/* valida campo nombre */
 	if (f.nombre.value == 0) {
-		document.getElementById("div_nombre").innerHTML="<font size=3 color='#FF0000'>El campo Nombre está vacío</font>";
+		document.getElementById("div_nombre").innerHTML="<div style=\"font-size:13px; color:red\">El campo Nombre está vacío</div>";
 		f.nombre.focus();
 		v = false;
 	}
@@ -192,7 +192,7 @@ function verificarSubasta() {
 	
 	/* valida campo descripcion */
 	if (f.descripcion.value == 0) {
-		document.getElementById("div_descripcion").innerHTML="<font size=3 color='#FF0000'>El campo Descripción está vacío</font>";
+		document.getElementById("div_descripcion").innerHTML="<div style=\"font-size:13px; color:red\">El campo Descripción está vacío</div>";
 		f.descripcion.focus();
 		v = false;
 	}
@@ -200,7 +200,7 @@ function verificarSubasta() {
 	
 	/* valida campo categoria */
 	if (f.categoria.value == "0") {
-		document.getElementById("div_categoria").innerHTML="<font size=3 color='#FF0000'>Debe seleccionar una categoría, seleccione \"Otros\" si no encuentra la categoría adecuada</font>";
+		document.getElementById("div_categoria").innerHTML="<div style=\"font-size:13px; color:red\">Debe seleccionar una categoría, seleccione \"Otros\" si no encuentra la categoría adecuada</div>";
 		f.categoria.focus();
 		v = false;
 	}
@@ -208,7 +208,7 @@ function verificarSubasta() {
 	
 	/* valida campo imagen */
 	if (f.imagen.value == 0) {
-		document.getElementById("div_imagen").innerHTML="<font size=3 color='#FF0000'>Debe seleccionar una imagen del producto</font>";
+		document.getElementById("div_imagen").innerHTML="<div style=\"font-size:13px; color:red\">Debe seleccionar una imagen del producto</div>";
 		f.imagen.focus();
 		v = false;
 	}
@@ -216,7 +216,7 @@ function verificarSubasta() {
 	
 	/* valida fecha y hora */
 	if (!valida_fecha(f.fecha_fin.value)) {
-		document.getElementById("div_fecha").innerHTML="<font size=3 color='#FF0000'>La fecha de fin debe situarse entre 15 a 30 días a partir de la fecha</font>";
+		document.getElementById("div_fecha").innerHTML="<div style=\"font-size:13px; color:red\">La fecha de fin debe situarse entre 15 a 30 días a partir de la fecha</div>";
 		f.fecha_fin.focus();
 		v = false;
 	}
@@ -225,8 +225,31 @@ function verificarSubasta() {
 	else return false;
 }
 
+function cuenta() {
+	document.getElementById("chars").innerHTML = "Caracteres restantes: " + (255 - document.oferta.descripcion.value.length);
+}
 
-
-
+function verificarOferta() {
+	var f = document.oferta;
+	var v = true;
+	
+	/* valida campo descripcion */
+	if (f.descripcion.value == 0) {
+		document.getElementById("div_descripcion").innerHTML="<div style=\"font-size:13px; color:red\">Ingrese un motivo</div>";
+		f.descripcion.focus();
+		v = false;
+	}
+	else document.getElementById("div_descripcion").innerHTML="";
+	
+	/* valida campo monto */
+	if ((f.monto.value == 0) || f.monto.value < "0") {
+		document.getElementById("div_monto").innerHTML="<div style=\"font-size:13px; color:red\">Ingrese un monto válido</div>";
+		f.monto.focus();
+		v = false;
+	}
+	else document.getElementById("div_monto").innerHTML="";
+	if (v) f.submit();
+	else return false;
+}
 
 
