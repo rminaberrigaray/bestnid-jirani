@@ -252,4 +252,25 @@ function verificarOferta() {
 	else return false;
 }
 
-
+function verificarGanador() {
+	var f = document.ganador;
+	opciones = document.getElementsByName("winner");
+ 
+	var seleccionado = false;
+	for(var i=0; i<opciones.length; i++) {    
+		if(opciones[i].checked) {
+			seleccionado = true;
+			break;
+		}
+	}
+ 
+	if(!seleccionado) {
+		document.getElementById("div_ganador").innerHTML="<div style=\"font-size:20px; color:red\">&nbsp Seleccione un ganador</div>";
+		return false;
+	}
+	else {
+		if (confirm('Una vez que seleccione un ganador no podrá cambiarlo, ¿está seguro de seleccionar ese ganador?')){  
+			f.submit();
+		}
+	}
+}

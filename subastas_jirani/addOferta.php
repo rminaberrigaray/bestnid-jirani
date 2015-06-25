@@ -8,7 +8,6 @@
 	CURDATE(),
 	".$_POST["monto"].",
 	".$_POST["id_subasta"].")";
-	echo $sql;
 	$resul=mysql_query($sql);
 	
 	header("Location: ofertas.php");
