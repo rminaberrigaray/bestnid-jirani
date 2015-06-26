@@ -49,39 +49,46 @@
 	 
 	 <label>Imagen:</label><br>
 	 <div id="div_imagen"></div>
-     <input id="file-upload" name="imagen" type="file" accept="image/*" value="">
 	 
+	 
+     <input type="file" name="imagen" class="upload-image" data-placeholder= "<?php echo ("data:image/*;base64,".base64_encode($reg["imagen"])); ?>" modificar="true" />
+
 	 <script>
-	 function readFile(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
- 
-            reader.onload = function (e) {
-                var filePreview = document.createElement('img');
-                filePreview.id = 'file-preview';
-                //e.target.result contents the base64 data from the image uploaded
-                filePreview.src = e.target.result;
-                console.log(e.target.result);
- 
-                var previewZone = document.getElementById('div_imagen');
-                previewZone.appendChild(filePreview);
-            }
- 
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
- 
-    var fileUpload = document.getElementById('file-upload');
-    fileUpload.onchange = function (e) {
-        readFile(e.srcElement);
-    }
-	</script>
-	</input>
+		Array.prototype.forEach.call(
+			document.getElementsByClassName("upload-image"),
+			function(fileElement) {
+				var previewElement = document.createElement("img");
+				previewElement.style.display = "block";
+				previewElement.style.maxWidth = "200px";
+				previewElement.style.maxHeight = "200px";
+				fileElement.parentNode.insertBefore(previewElement, fileElement);
+				
+				var fileReader = new FileReader();
+				
+				fileReader.onload = function(event) {
+					previewElement.src = event.target.result;
+				};
+				
+				fileElement.addEventListener("change", updateImagePreview, false);
+				updateImagePreview();
+				
+				function updateImagePreview() {
+					var file = fileElement.files[0];
+					if (file) {
+						fileReader.readAsDataURL(file);
+					} else {
+						var placeholderSrc = fileElement.getAttribute("data-placeholder");
+						if (placeholderSrc) {
+							previewElement.src = placeholderSrc;
+						} else {
+							previewElement.removeAttribute("src");
+						}
+					}
+				}
+			}
+		);
+</script>
 	<br>
-	<?php
-	 
-     echo '<img src="data:image/jpeg;base64,'.base64_encode($reg["imagen"]).'"/>';
-     ?>
 	<br>
 	 <label>Fecha y hora de fin:</label><br>
 	 <?php $fecha = date_create($reg["fecha_fin"]);

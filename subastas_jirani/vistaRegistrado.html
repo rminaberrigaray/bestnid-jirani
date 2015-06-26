@@ -24,6 +24,17 @@ require_once("conexion.php");
    <h4 style=" margin-left: 800px;
     margin-top: -2px"><?php echo $_SESSION["nombre_usuario"]; ?>&nbsp &nbsp &nbsp <a href="salir.php">Cerrar Sesión</a>
 	</div>
+	<div>
+	<?php
+		$consul="select * from administrador
+		where
+		nombre_usuario='".$_SESSION["nombre_usuario"]."'";
+		$resul=mysql_query($consul);
+		if(mysql_num_rows($resul) > 0) {
+			echo("<a href="vistaAdministrador.php" title="Cambiar a vista administrador"></a>") 
+		}
+	?>
+	</div>
       <div>
 	  <a href="index.php" title="Subastas Bestnid"> 
       <img class="imagen" src="imagenes/logo4.png" style="margin-top: -25px" />

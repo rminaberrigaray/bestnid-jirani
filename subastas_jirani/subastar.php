@@ -58,8 +58,44 @@
 	 
 	 <label>Imagen:</label><br>
 	 <div id="div_imagen"></div>
-	 <input name="imagen" type="file" accept="image/*" /> <br>
-	 <br>
+	  <input type="file" name="imagen" class="upload-image" data-placeholder="" />
+
+	 <script>
+		Array.prototype.forEach.call(
+			document.getElementsByClassName("upload-image"),
+			function(fileElement) {
+				var previewElement = document.createElement("img");
+				previewElement.style.display = "block";
+				previewElement.style.maxWidth = "200px";
+				previewElement.style.maxHeight = "200px";
+				fileElement.parentNode.insertBefore(previewElement, fileElement);
+				
+				var fileReader = new FileReader();
+				
+				fileReader.onload = function(event) {
+					previewElement.src = event.target.result;
+				};
+				
+				fileElement.addEventListener("change", updateImagePreview, false);
+				updateImagePreview();
+				
+				function updateImagePreview() {
+					var file = fileElement.files[0];
+					if (file) {
+						fileReader.readAsDataURL(file);
+					} else {
+						var placeholderSrc = fileElement.getAttribute("data-placeholder");
+						if (placeholderSrc) {
+							previewElement.src = placeholderSrc;
+						} else {
+							previewElement.removeAttribute("src");
+						}
+					}
+				}
+			}
+		);
+</script>
+<br><br>
 	
 	 <label>Fecha y hora de fin:</label><br>
 	 <div id="div_fecha"></div>

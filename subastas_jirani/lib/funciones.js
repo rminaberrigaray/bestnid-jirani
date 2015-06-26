@@ -207,7 +207,7 @@ function verificarSubasta() {
 	else document.getElementById("div_categoria").innerHTML="";
 	
 	/* valida campo imagen */
-	if (f.imagen.value == 0) {
+	if ((f.imagen.value == 0) && (f.imagen.getAttribute("modificar") != "true" )) {
 		document.getElementById("div_imagen").innerHTML="<div style=\"font-size:13px; color:red\">Debe seleccionar una imagen del producto</div>";
 		f.imagen.focus();
 		v = false;

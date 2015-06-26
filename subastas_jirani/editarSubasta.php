@@ -3,20 +3,23 @@
    if($_SESSION["nombre_usuario"])
    {
     require_once("conexion.php");
-	$fp = fopen ($_FILES["imagen"]["tmp_name"], 'r');
-	if ($fp) {
-		$datos = fread ($fp, filesize($_FILES["imagen"]["tmp_name"]));
-		$datos = addslashes($datos);
+	
+	if ($_FILES["imagen"]["tmp_name"] != "") {
+		$fp = fopen ($_FILES["imagen"]["tmp_name"], 'r');
+		if ($fp) {
+			$datos = fread ($fp, filesize($_FILES["imagen"]["tmp_name"]));
+			$datos = addslashes($datos);
+		}
+		fclose($fp);
+	
+		$sql="update imagen set
+		nombre='".$_FILES["imagen"]["name"]."',
+		imagen='".$datos."',
+		tipo='".$_FILES["imagen"]["type"]."'
+		where id_imagen=".$_POST["id_imagen"]."";
+	
+		$res=mysql_query($sql);
 	}
-	fclose($fp);
-	
-	$sql="update imagen set
-	nombre='".$_FILES["imagen"]["name"]."',
-	imagen='".$datos."',
-	tipo='".$_FILES["imagen"]["type"]."'
-	where id_imagen=".$_POST["id_imagen"]."";
-	
-	$res=mysql_query($sql);
 	
 	$sql="update subasta set
 	nombre_producto='".$_POST["nombre"]."',
