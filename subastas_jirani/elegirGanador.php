@@ -48,7 +48,7 @@
 <div id="div_ganador"></div>
 <form name="ganador" action="addGanador.php" method="post">
 <input type="hidden" name="id_subasta" value=<?php echo $subasta["id_subasta"] ?>>
-<table width="100%" align="center" border="1" style="margin: 15px 5px">
+<table width="100%" align="center" border="1" style="margin: 15px 5px; background-color: white">
 
 <tr>
 <td valign="top" align="center" colspan="5" >
@@ -74,7 +74,7 @@ Motivo
 </td>
 
 <td width="15%">
-Ganadorr
+Ganador
 </td>
 <?php
 			while($oferta=mysql_fetch_array($result)) {

@@ -23,7 +23,7 @@
 	 <div id="div_user"></div>
 	 
      <label style="margin-right:1px; margin-left:22px">Clave:</label>
-     <input type="password" name="clave" required /><br><br>
+     <input type="password" name="clave" required />
 	 <div id="div_clave"></div>
 	 <input type="button" value="Registrarme" title="Registrarme" onClick="validarReg()" style="margin-left:95px" >
      

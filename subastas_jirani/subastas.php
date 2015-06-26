@@ -19,14 +19,15 @@ $consul="SELECT *
 FROM subasta s
 INNER JOIN imagen i ON s.id_imagen = i.id_imagen
 INNER JOIN categoria c ON s.id_categoria= c.id_categoria
-WHERE s.nombre_usuario = '".$_SESSION["nombre_usuario"]."'
+WHERE s.nombre_usuario = '".$_SESSION["nombre_usuario"]."' 
+AND s.estado=0
 AND s.fecha_fin > CURDATE()
 ORDER BY s.fecha_inicio desc";
 
 $result=mysql_query($consul);
 if (($result != false) && (mysql_num_rows($result) > 0)) {
 ?>
-<table width="800px" align="left" border="1" style="margin: 15px 5px">
+<table width="800px" align="left" border="1" style="margin: 15px 5px; background-color: white">
 
 <tr>
 <td valign="top" align="center" colspan="6" >
@@ -84,7 +85,7 @@ ORDER BY s.fecha_inicio desc";
 $result=mysql_query($consul);
 if (($result != false) && (mysql_num_rows($result) > 0)) {
 ?>
-<table width="800px" align="left" border="1" style="margin: 15px 5px">
+<table width="800px" align="left" border="1" style="margin: 15px 5px; background-color: white">
 
 <tr>
 <td valign="top" align="center" colspan="5" >

@@ -90,7 +90,7 @@ header
     font-size: 13px;
     font-weight: bold;
     line-height: 28px;
-    padding: 0 30px; /* para ajustar cada item*/
+    padding: 0 29px; /* para ajustar cada item*/
     margin: 6px 0;
     text-decoration: none;
     /* animamos el cambio de color de los textos */
@@ -234,16 +234,17 @@ header
 
 .item.box.normal {
    width: 220px;
-  height: 370px;
+   height: 370px;
 }
 
 .item.box {
+  background-color: white;
   float: left; 
   border: 1px solid #837373;
   margin: 0 6px 9px 0;
   border: 5px solid #B5B2B2;
   border-radius: 5px;
-  color: rgba(117, 38, 38, 1);
+  color: rgba(0, 0, 0, 1);
 }
 
 .item.box.title;
@@ -291,4 +292,25 @@ header
 .registros {
    color: rgba(117, 38, 38, 1);
 }
-
+#detalles{float:left; width:50%;}
+#comenta{float: right;
+width: 40%;}
+.comentario {
+  border-radius: 8px 0px 8px 8px;
+  border-width: 2px;
+  border-color: #cccccc;
+  border-style: solid;
+  margin: 2px 5px;
+  padding: 5px;
+  display: block;
+  margin-bottom: 20px;
+}
+.nombre{
+  overflow: auto;
+  border: 2px solid #CCC;
+  margin-bottom: -4px;
+  border-radius: 8px 8px 0px 0px;
+  float: right;
+  margin-right: 5px;
+  border-bottom: 4px solid white;
+  padding: 5px;

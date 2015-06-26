@@ -10,6 +10,9 @@
 	".$_POST["id_subasta"].")";
 	$resul=mysql_query($sql);
 	
-	header("Location: ofertas.php");
-	die();
+	echo "<script type=''>
+	     alert('Su oferta ha sido registrada');
+	     window.location='ofertas.php';
+		 echo 
+         </script>";	
 ?>

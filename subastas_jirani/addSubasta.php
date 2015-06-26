@@ -25,7 +25,7 @@
 	$cat=mysql_fetch_array($result);
 	$id_cat = $cat["id_categoria"];
 	
-	$sql="INSERT INTO subasta (nombre_producto, descripcion, nombre_usuario, fecha_inicio, fecha_fin, id_imagen, id_categoria, id_ganador)
+	$sql="INSERT INTO subasta (nombre_producto, descripcion, nombre_usuario, fecha_inicio, fecha_fin, id_imagen, id_categoria, id_ganador, estado)
 	VALUES ('".$_POST["nombre"]."',
 	'".$_POST["descripcion"]."',
 	'".$_SESSION["nombre_usuario"]."',
@@ -33,9 +33,13 @@
 	'".$fec."',
 	".$id_img.",
 	".$id_cat.",
-	NULL)";
+	NULL,
+	0)";
 	$res=mysql_query($sql);
 	
-	header("Location: subastas.php");
-	die();
+	echo "<script type=''>
+	     alert('Su subasta ha sido registrada');
+	     window.location='subastas.php';
+		 echo 
+         </script>";	
 ?>

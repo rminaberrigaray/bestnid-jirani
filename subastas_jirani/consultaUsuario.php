@@ -17,7 +17,7 @@
 		else
 		{
 			
-		 $sql=" INSERT INTO usuario 
+		 $sql=" INSERT INTO usuario (nombre_usuario, email, contraseña, fecha_alta, nombre, apellido, direccion)
 		 VALUES ('".$_POST["user"]."',
 		 '".$_POST["email"]."',
 		 '".$_POST["clave"]."',

@@ -42,7 +42,8 @@
 <?php
      $consul="SELECT *
      FROM subasta s
-     INNER JOIN imagen i ON s.id_imagen = i.id_imagen";
+     INNER JOIN imagen i ON s.id_imagen = i.id_imagen
+	 where s.estado=0";
 	 if(isset($_POST["orden"])) {
 		$consul=$consul." ORDER BY ".$_POST["orden"];
 	 }

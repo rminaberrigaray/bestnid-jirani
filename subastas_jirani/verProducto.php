@@ -25,6 +25,7 @@ WHERE s.id_subasta =".$_GET["idSubasta"]."
 $result=mysql_query($consul);
 $subasta=mysql_fetch_array($result);
 ?>
+<section id="detalles">
 <div class="registros">
 <div> <h3>
 <?php
@@ -50,10 +51,48 @@ $fecha = date_create($subasta["fecha_fin"]);
 echo $subasta["nombre"];
 ?></div><br>
 
-
 </div>
-
-
+</section>
+<section id="comenta">
+<h4>
+    <label>Pregunta:</label><br>
+   <?php
+    $consul="SELECT * FROM comentario 
+    WHERE id_subasta =".$_GET["idSubasta"]."";
+    $result=mysql_query($consul);
+	
+    while($coment=mysql_fetch_array($result)) {
+    ?>
+	<div class="nombre">
+	nely
+	</div>
+	<div class="comentario" style="color: #F04646;">
+     <?php echo $coment["texto_pregunta"] ?>
+	</div>
+    <?php
+	}
+	?>
+   
+   
+   <br>
+   <form name="pregunta" method="post" action="pregunta.php">
+	
+     <label>Comentario:</label><br>
+	 <div id="div_descripcion"></div>
+     <textarea type="text" name="pregunta" cols="50" rows="5" maxlength="255" onKeyDown="cuenta()" onKeyUp="cuenta()"></textarea><br>
+   	 <div id="chars" style="font-size:12px">Caracteres restantes: 255</div>
+	 <br>
+	 
+	 <input type="hidden" name="id_subasta" value=<?php echo $_GET["idSubasta"]; ?>>
+	 
+     <input type="submit" value="Enviar" title="Enviar"/>
+     
+   </form>
+   <br>
+   
+   
+   <h4>
+</section>
 
 
 
