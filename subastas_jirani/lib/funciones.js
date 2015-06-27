@@ -275,3 +275,18 @@ function verificarGanador() {
 	}
 }
 
+function verificarFechas() {
+	var f = document.consulta_ventas;
+	var v = true;
+	
+	var fec_ini = new Date(Date.parse(f.fecha_ini.value.replace(/-/g, "/")));
+	var fec_fin = new Date(Date.parse(f.fecha_fin.value.replace(/-/g, "/")));
+	
+	if (fec_ini > fec_fin) {
+		document.getElementById("div_fechas").innerHTML="<div style=\"font-size:13px; color:red\">La fecha de inicio es mayor a la de fin</div>";
+		v = false;
+	}
+	
+	if (v) f.submit();
+	else return false;
+}

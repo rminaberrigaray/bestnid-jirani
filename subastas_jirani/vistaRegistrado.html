@@ -31,7 +31,7 @@ require_once("conexion.php");
 		nombre_usuario='".$_SESSION["nombre_usuario"]."'";
 		$resul=mysql_query($consul);
 		if(mysql_num_rows($resul) > 0) {
-			echo("<a href="vistaAdministrador.php" title="Cambiar a vista administrador"></a>") 
+			echo('<a href="funcionesAdministrador.php" title="Funciones administrador" style="margin-left: 800px">Funciones administrador</a>');
 		}
 	?>
 	</div>
