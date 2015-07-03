@@ -12,7 +12,8 @@
 </script>
 
 
-
+<center><a href="subastar.php">
+<input type="button" value="Realizar una subasta" class="button" title="Subastar"/></a></center>
 
 <?php
 $consul="SELECT *
@@ -80,6 +81,7 @@ INNER JOIN imagen i ON s.id_imagen = i.id_imagen
 INNER JOIN categoria c ON s.id_categoria= c.id_categoria
 WHERE s.nombre_usuario = '".$_SESSION["nombre_usuario"]."'
 AND s.fecha_fin <= CURDATE()
+AND s.estado = 0
 ORDER BY s.fecha_inicio desc";
 
 $result=mysql_query($consul);
@@ -117,13 +119,17 @@ Categoría
 	while($subasta=mysql_fetch_array($result))
 	{
 		mostrar_subasta($subasta);
+		if($subasta["id_ganador"] != NULL){
+		   mostrar_boton_ganador($subasta);
+		}
+		else {
 		mostrar_boton_finalizada($subasta);
+		}
 	}
 }
 ?>
 </table>
-<br><center><a href="subastar.php">
-<input type="button" value="Realizar una subasta" class="button" title="Subastar"/></a></center>
+<br>
 </body>
 </html>
 <?php

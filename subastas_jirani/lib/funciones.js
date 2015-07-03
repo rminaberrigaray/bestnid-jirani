@@ -228,6 +228,9 @@ function verificarSubasta() {
 function cuenta() {
 	document.getElementById("chars").innerHTML = "Caracteres restantes: " + (255 - document.oferta.descripcion.value.length);
 }
+function cuentaCom() {
+	document.getElementById("chars").innerHTML = "Caracteres restantes: " + (255 - document.comentario.texto.value.length);
+}
 
 function verificarOferta() {
 	var f = document.oferta;
@@ -290,3 +293,16 @@ function verificarFechas() {
 	if (v) f.submit();
 	else return false;
 }
+
+ window.addEventListener('load',inicio,false);
+    function inicio(){
+     document.getElementById("comentario").addEventListener('submit',verificar,false);
+    }
+	
+    function verificar(evt){
+	 var tex=document.getElementById("texto").value;
+	 if (tex.length == 0) {
+		document.getElementById("div_comentario").innerHTML="<div style=\"font-size:14px; color:red\">No ha escrito ningún comentario</div>";
+		 evt.preventDefault();
+	 }	
+    }

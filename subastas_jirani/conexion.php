@@ -64,4 +64,13 @@ function mostrar_boton_finalizada($subasta) {
 </td>
 <?php
 }
+function mostrar_boton_ganador($subasta) {
+?>
+<td width="100px"><center>
+<input type="button" value="Tiene ganador" class="button" title="Tiene ganador"
+style="background: -webkit-linear-gradient(left, #261CC0,#261CC0);"/>
+</center>
+</td>
+<?php
+}
 ?>

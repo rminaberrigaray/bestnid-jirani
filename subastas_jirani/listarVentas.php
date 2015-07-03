@@ -6,14 +6,14 @@
 	$fec_fin=strtotime($_POST["fecha_fin"]);
 	$fec_fin=date("Y-m-d", $fec_fin);
 	$sql="SELECT *,
-		s.nombre_usuario as vendedor,
+     	s.nombre_usuario as vendedor,
 		o.nombre_usuario as comprador,
-		g.fecha as fecha_venta
-		FROM subasta s
-		INNER JOIN ganador g ON s.id_ganador = g.id_ganador
-		INNER JOIN oferta o ON g.id_oferta = o.id_oferta
-		WHERE g.fecha >= '".$fec_ini."'
-		AND g.fecha <= '".$fec_fin."'";
+		g.fecha as fecha_venta 
+		FROM ganador g INNER JOIN oferta o ON g.id_oferta = o.id_oferta 
+		INNER JOIN subasta s ON o.id_subasta = s.id_subasta
+		WHERE g.fecha BETWEEN '".$fec_ini."'
+		AND '".$fec_fin."'";
+		
 		$result=mysql_query($sql);
 	if(mysql_num_rows($result) == 0) {
 		echo "<script type=''>

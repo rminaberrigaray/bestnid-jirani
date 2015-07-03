@@ -282,19 +282,17 @@ header
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -o-border-radius: 4px;
-  background: #DA1F38;
+  background: #CD0A09;
   background: linear-gradient(left, #4972B5, #618ACB);
   background: -moz-linear-gradient(left, #4972B5, #618ACB);
-  background: -webkit-linear-gradient(left, #2E2929, #DA1F38);
-  background: -o-linear-gradient(left, #4972B5, #618ACB);
+  background: -webkit-linear-gradient(left, #DA1F38 #DA1F38);
+  background: -o-linear-gradient(left, #618ACB, #618ACB);
   color: #FFFFFF;
   }
 .registros {
    color: rgba(117, 38, 38, 1);
 }
-#detalles{float:left; width:50%;}
-#comenta{float: right;
-width: 40%;}
+
 .comentario {
   border-radius: 8px 0px 8px 8px;
   border-width: 2px;
@@ -312,5 +310,6 @@ width: 40%;}
   border-radius: 8px 8px 0px 0px;
   float: right;
   margin-right: 5px;
-  border-bottom: 4px solid white;
+  border-bottom:4px solid rgb(204, 204, 204);
   padding: 5px;
+}

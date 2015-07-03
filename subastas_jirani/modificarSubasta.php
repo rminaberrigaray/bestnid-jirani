@@ -31,9 +31,10 @@
      <select name="categoria">
      <option value="<?php echo $reg["id_categoria"];?>" selected><?php echo $reg["nombre"];?></option>
      <?php 
+	 $id=  $reg["id_categoria"];
 	 $consul="SELECT * FROM categoria
      WHERE id_categoria NOT IN (SELECT id_categoria
-     FROM categoria WHERE id_categoria =3)";
+     FROM categoria WHERE id_categoria = '$id' )";
      $result=mysql_query($consul);
 	 
      while($categoria=mysql_fetch_array($result))
