@@ -1,41 +1,59 @@
 <?php 
 	session_start();
-	include("vistaRegistrado.html"); 
 	require_once("conexion.php");
-	if(($_SESSION["nombre_usuario"])) {
-		$sql="SELECT *
-		FROM subasta
-		WHERE id_subasta = ".$_GET["idSubasta"];
-		$result=mysql_query($sql);
-		if(mysql_num_rows($result) == 0) {
-			echo "<script type='text/javascript'>
-			alert('La subasta seleccionada no existe');
-			window.location='subastas.php';
-			</script>";
-			die();
+	if(isset($_SESSION["nombre_usuario"])) {
+		include("vistaRegistrado.html"); 
+		$err=FALSE;
+		if(isset($_GET["idSubasta"])) {
+			$sql="SELECT *
+			FROM subasta
+			WHERE id_subasta = ".$_GET["idSubasta"];
+			$result=mysql_query($sql);
+			if(mysql_num_rows($result) == 0) {
+				$msj="La subasta seleccionada no existe";
+				$err=TRUE;
+				$tipo="msj_error";
+			}
+			$subasta=mysql_fetch_array($result);
 		}
-		$subasta=mysql_fetch_array($result);
-		if($subasta["nombre_usuario"] != $_SESSION["nombre_usuario"]) {
-			echo "<script type='text/javascript'>
-			alert('Acceso denegado: no es dueño de la subasta');
-			window.location='subastas.php';
-			</script>";
-			die();
+		else {
+			$err=TRUE;
+			$tipo="msj_error";
+			$msj="No seleccionó ninguna subasta";
 		}
-		if(strtotime($subasta["fecha_fin"]) >= strtotime("today")) {
-			echo "<script type='text/javascript'>
-			alert('La subasta seleccionada aún está en curso');
-			window.location='subastas.php';
-			</script>";
-			die();
+		if( !$err && ($subasta["nombre_usuario"] != $_SESSION["nombre_usuario"])) {
+			$msj="Acceso denegado: no es dueño de la subasta";
+			$err=TRUE;
+			$tipo="msj_error";
 		}
-		if($subasta["id_ganador"] != NULL) {
-			echo "<script type='text/javascript'>
-			alert('La subasta seleccionada ya posee un ganador');
-			window.location='subastas.php';
-			</script>";
-			die();
+		if( !$err && (strtotime($subasta["fecha_fin"]) >= strtotime("today")) ) {
+			$msj="La subasta seleccionada aún está en curso";
+			$err=TRUE;
+			$tipo="msj_mensaje";
 		}
+		if( !$err && ($subasta["id_ganador"] != NULL)) {
+			$msj="La subasta seleccionada ya posee un ganador";
+			$err=TRUE;
+			$tipo="msj_mensaje";
+		}
+		
+		if($err) {
+?>
+<form id="mensaje" action="subastas.php" method="post">
+<input type="hidden" name="<?php echo $tipo ?>" value="<?php echo $msj ?>">
+</form>
+
+<script type="text/javascript">
+    function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+    }
+    window.onload = enviarMsj;
+</script>
+<?php
+die();
+		}
+		
 		$sql="SELECT *
 		FROM oferta
 		WHERE id_subasta = ".$_GET["idSubasta"];
@@ -126,10 +144,19 @@ echo $oferta["descripcion"];
 <?php
  }
 	else {
-		echo "<script type='text/javascript'>
-		alert('Usted no esta logueado');
-		window.location='index.php';
-		</script>";
-		die();
+?>
+<form id="mensaje2" action="index.php" method="post">
+<input type="hidden" name="msj_mensaje" value="Usted no está logueado">
+</form>
+
+<script type="text/javascript">
+    function enviarMsj2 () {
+        var frm = document.getElementById("mensaje2");
+        frm.submit();
+    }
+    window.onload = enviarMsj2;
+</script>
+	 
+<?php	   
 	}
 ?>

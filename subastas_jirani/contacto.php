@@ -8,10 +8,20 @@
    
    else     
        {
-	   echo "<script type='text/javascript'>
-	   alert('Usted no esta logueado');
-	   window.location='index.php';
-	   </script>";
+?>
+<form id="mensaje" action="index.php" method="post">
+<input type="hidden" name="msj_mensaje" value="Usted no está logueado">
+</form>
+
+<script type="text/javascript">
+    function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+    }
+    window.onload = enviarMsj;
+</script>	 
+
+<?php	   
 	   }
 	   
    

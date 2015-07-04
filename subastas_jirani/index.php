@@ -15,7 +15,11 @@
 	a.className = "active";
 </script>
 
-<div align=center style="margin-top: 22px;">
+<?php if(isset($_POST["msj_exito"])) {?> <div class="exito"> <?php echo $_POST["msj_exito"]; ?> </div> <?php } ?>
+<?php if(isset($_POST["msj_error"])) {?> <div class="error"> <?php echo $_POST["msj_error"]; ?> </div> <?php } ?>
+<?php if(isset($_POST["msj_mensaje"])) {?> <div class="mensaje"> <?php echo $_POST["msj_mensaje"]; ?> </div> <?php } ?>
+
+<div align=center>
 <form action="" method="post">Ordenar productos 
 <select id="order" name="orden" onchange="this.form.submit()">
 	<option id="0" value="fecha_inicio desc">Lo más nuevo</option>

@@ -1,6 +1,11 @@
 <?php
-require_once("conexion.php");
-session_start();
+	require_once("conexion.php");
+	session_start();
+	$consul="select * from administrador
+	where
+	nombre_usuario='".$_SESSION["nombre_usuario"]."'";
+	$resul=mysql_query($consul);
+	if(mysql_num_rows($resul) > 0) {
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -21,19 +26,7 @@ session_start();
 	</div>
 	<div>
 	<?php
-		$consul="select * from administrador
-		where
-		nombre_usuario='".$_SESSION["nombre_usuario"]."'";
-		$resul=mysql_query($consul);
-		if(mysql_num_rows($resul) > 0) {
 			echo('<a href="index.php" title="Funciones usuario registrado" style="margin-left: 800px">Funciones usuario registrado</a>');
-		}
-		else {
-			echo "<script type=''>
-			alert('Acceso denegado');
-			window.location='index.php';
-			</script>";
-		}
 	?>
 	</div>
       <div>
@@ -42,7 +35,6 @@ session_start();
 	  </a>
       </div>
    </header> 
-   
    <div class="menu" style="margin-top:0px">
    <ul class="nav">
 
@@ -53,3 +45,24 @@ session_start();
 <br>
 </body>  
 </html>  
+	<?php
+	}
+		else {
+
+?>
+<form id="mensaje" action="index.php" method="post">
+<input type="hidden" name="msj_error" value="Acceso denegado">
+</form>
+
+<script type="text/javascript">
+    function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+    }
+    window.onload = enviarMsj;
+</script>	 
+
+	 
+<?php	   
+   }
+?>

@@ -13,10 +13,13 @@
 		WHERE o.nombre_usuario = '".$_SESSION["nombre_usuario"]."'";
 		$result=mysql_query($sql);
 		if(mysql_num_rows($result) == 0) {
-			echo("Usted no ha realizado ninguna oferta");
+			echo("<div class=\"mensaje\">Usted no ha realizado ninguna oferta</div>");
 		}
 		else {
 ?>
+
+<?php if(isset($_POST["msj_exito"])) {?> <div id="div_mensaje" class="exito"> <?php echo $_POST["msj_exito"]; ?> </div> <?php } ?>
+
 <table width="100%" align="center" border="1" style="margin: 15px 5px; background-color: white">
 
 <tr>
@@ -94,10 +97,20 @@ echo $oferta["motivo"];
 <?php
  }
 	else {
-		echo "<script type='text/javascript'>
-		alert('Usted no esta logueado');
-		window.location='index.php';
-		</script>";
-		die();
+?>
+
+<form id="mensaje" action="index.php" method="post">
+<input type="hidden" name="msj_mensaje" value="Usted no está logueado">
+</form>
+
+<script type="text/javascript">
+    function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+    }
+    window.onload = enviarMsj;
+</script>	 
+
+<?php	   
 	}
 ?>

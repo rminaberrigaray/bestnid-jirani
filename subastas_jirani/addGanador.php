@@ -13,6 +13,23 @@
 	echo $sql;
 	$resul=mysql_query($sql);
 	
-	header("Location: subastas.php");
-	die();
 ?>
+
+<html>
+<head>
+</head>
+<body>
+<form id="mensaje" action="subastas.php" method="post">
+<input type="hidden" name="msj_exito" value="El ganador fue registrado exitosamente">
+</form>
+
+<script type="text/javascript">
+    function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+    }
+    window.onload = enviarMsj;
+</script>
+
+</body>
+</html>

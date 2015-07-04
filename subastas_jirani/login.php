@@ -1,6 +1,6 @@
 <?php
    session_start();
-   if($_POST["nom"]!=null)
+   if(isset($_POST["nom"]))
    {
    require_once("conexion.php");
    $consul="select * from usuario
@@ -11,15 +11,27 @@
     $resul=mysql_query($consul);
     if(mysql_num_rows($resul) == 0)
     {
-	   echo "<script type='text/javascript'>
-	   alert('El Usuario no existe O no coincide con la contraseña');
-	   window.location='index.php';
-	   </script>";
+?>
+<form id="mensaje" action="index.php" method="post">
+<input type="hidden" name="msj_error" value="El nombre de ususario no existe o no coincide con la contraseña">
+</form>
+
+<script type="text/javascript">
+    function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+    }
+    window.onload = enviarMsj;
+</script>	 
+
+	 
+<?php	   
     }
    else
    {
 	   $_SESSION["nombre_usuario"]=$_POST["nom"];
 	   header("Location: index.php");
+	   die();
    }
 	   }
 	   else
@@ -30,18 +42,3 @@
 	       </script>";
 	   }
 ?>
-
-<!-- Copyright 2014(c) Nauth WS http://www.nauth.com.ar -->
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-   <title>Subastas Bestnid</title>
-</head>
-
-<body>
-
-</body>
-</html>

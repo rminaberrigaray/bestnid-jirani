@@ -1,4 +1,15 @@
-<?php include("vistaVisitante.html"); ?>
+<?php 
+session_start();
+if(isset($_SESSION["nombre_usuario"])) {
+	header("Location: index.php");
+	die();
+}
+
+include("vistaVisitante.html"); 
+
+?>
+
+<?php if(isset($_POST["msj_error"])) {?> <div id="div_mensaje" class="error"> <?php echo $_POST["msj_error"]; ?> </div> <?php } ?>
 
 <div class="reg">
 

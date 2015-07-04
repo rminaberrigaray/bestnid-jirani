@@ -9,10 +9,19 @@
 		
         if(mysql_num_rows($result) != 0)
         {
-	      echo "<script type='text/javascript'>
-	      alert('El usuario ya existe. Por favor vuelva a ingresar otro');
-	      window.location='registrarse.php';
-	      </script>";
+?>
+<form id="mensaje" action="registrarse.php" method="post">
+<input type="hidden" name="msj_error" value="El usuario ya existe. Por favor ingrese otro">
+</form>
+
+<script type="text/javascript">
+    function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+    }
+    window.onload = enviarMsj;
+</script>
+<?php	  
         }
 		else
 		{
@@ -35,11 +44,19 @@
 		 session_start();
          $_SESSION["nombre_usuario"]=$_POST["user"];
 	   
-         echo "<script type=''>
-	     alert('Se ha registrado exitosamente');
-	     window.location='index.php';
-		 echo 
-         </script>";	  
+?>
+<form id="mensaje2" action="index.php" method="post">
+<input type="hidden" name="msj_exito" value="Se ha registrado exitosamente">
+</form>
+
+<script type="text/javascript">
+    function enviarMsj2 () {
+        var frm = document.getElementById("mensaje2");
+        frm.submit();
+    }
+    window.onload = enviarMsj2;
+</script>
+<?php	  
 	      
 		}
 	  }

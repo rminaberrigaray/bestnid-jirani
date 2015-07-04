@@ -30,18 +30,42 @@
 	WHERE id_subasta=".$_POST["id_subasta"]."";
 	
 	$res=mysql_query($sql);
-	echo "<script type=''>
-	     alert('La subasta fue modificada correctamente');
-	     window.location='subastas.php';
-         </script>";
+?>
+<html>
+<head>
+</head>
+<body>
+<form id="mensaje" action="subastas.php" method="post">
+<input type="hidden" name="msj_exito" value="La subasta fue modificada correctamente">
+</form>
+
+<script type="text/javascript">
+    function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+    }
+    window.onload = enviarMsj;
+</script>
+
+</body>
+</html>
+<?php
   }
 	else
 	    {
-	     echo "<script type=''>
-	     alert('Usted no se encuentra logueado');
-	     window.location='index.php';
-         </script>";
+?>
+<form id="mensaje" action="index.php" method="post">
+<input type="hidden" name="msj_mensaje" value="Usted no está logueado">
+</form>
+
+<script type="text/javascript">
+    function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+    }
+    window.onload = enviarMsj;
+</script>	 
+
+<?php	   
 	    }
-	
-	die();
 ?>

@@ -16,10 +16,21 @@
 		
 		$result=mysql_query($sql);
 	if(mysql_num_rows($result) == 0) {
-		echo "<script type=''>
-			alert('No se realizó ninguna venta entre las fechas seleccionadas');
-			window.location='consultaVentas.php';
-			</script>";
+?>
+<form id="mensaje" action="consultaVentas.php" method="post">
+<input type="hidden" name="msj_mensaje" value="No se realizó ninguna venta entre las fechas seleccionadas">
+</form>
+
+<script type="text/javascript">
+    function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+    }
+    window.onload = enviarMsj;
+</script>	 
+
+	 
+<?php	   
 	}
 	else {
 	?>

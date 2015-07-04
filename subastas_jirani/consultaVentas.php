@@ -17,6 +17,8 @@
 	a.className = "active";
 </script>
 
+<?php if(isset($_POST["msj_mensaje"])) {?> <div class="mensaje"> <?php echo $_POST["msj_mensaje"]; ?> </div> <?php } ?>
+
 <form name="consulta_ventas" method="post" action="listarVentas.php">
 
 <label>Fecha inicial:</label><br>

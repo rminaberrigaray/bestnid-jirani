@@ -36,10 +36,16 @@
 	NULL,
 	0)";
 	$res=mysql_query($sql);
-	
-	echo "<script type=''>
-	     alert('Su subasta ha sido registrada');
-	     window.location='subastas.php';
-		 echo 
-         </script>";	
 ?>
+
+<form id="mensaje" action="subastas.php" method="post">
+<input type="hidden" name="msj_exito" value="Su subasta ha sido registrada">
+</form>
+
+<script type="text/javascript">
+    function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+    }
+    window.onload = enviarMsj;
+</script>

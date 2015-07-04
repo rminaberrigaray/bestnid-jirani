@@ -6,10 +6,28 @@
 	include("vistaRegistrado.html");
    }
    
-   else     
-       {include("vistaVisitante.html");}
-  
- ?> 
+   else {
+	include("vistaVisitante.html");
+   }
+   
+   $consul="SELECT *
+     FROM subasta s
+     INNER JOIN imagen i ON s.id_imagen = i.id_imagen
+	 WHERE s.nombre_producto like '%".$_POST["busqueda"]."%' and s.estado=0";
+
+	 if(isset($_SESSION["nombre_usuario"])){
+	   $consul=$consul." and s.nombre_usuario != '".$_SESSION["nombre_usuario"]."'"; }
+	   
+	 if(isset($_POST["orden"])) {
+		$consul=$consul." ORDER BY ".$_POST["orden"];
+	}
+	else {
+		$consul=$consul." ORDER BY fecha_inicio desc";
+	 }
+     $result=mysql_query($consul);
+	 if(mysql_num_rows($result) > 0) {
+	 
+?> 
 <div align="center">
 <form action="" method="post">Ordenar productos 
 <select id="order" name="orden" onchange="this.form.submit()">
@@ -36,24 +54,8 @@
 </div>
 
 <?php
-
-   $consul="SELECT *
-     FROM subasta s
-     INNER JOIN imagen i ON s.id_imagen = i.id_imagen
-	 WHERE s.nombre_producto like '%".$_POST["busqueda"]."%' and s.estado=0";
-
-	 if(isset($_SESSION["nombre_usuario"])){
-	   $consul=$consul." and s.nombre_usuario != '".$_SESSION["nombre_usuario"]."'"; }
-	   
-	 if(isset($_POST["orden"])) {
-		$consul=$consul." ORDER BY ".$_POST["orden"];
-	}
-	else {
-		$consul=$consul." ORDER BY fecha_inicio desc";
-	 }
-     $result=mysql_query($consul);
-     while($subasta=mysql_fetch_array($result))
-     {
+		 while($subasta=mysql_fetch_array($result))
+		 {
 ?>
 
 <div class="products">
@@ -84,6 +86,12 @@
 	 </form>
    </div>
 </div>
+<?php
+		}
+	 }
+	 else {
+?>
+<div id="div_mensaje" class="mensaje"> Su búsqueda no produjo ningún resultado </div>
 <?php
 	 }
 ?>
