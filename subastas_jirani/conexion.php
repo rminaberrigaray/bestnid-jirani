@@ -73,4 +73,94 @@ style="background: -webkit-linear-gradient(left, #261CC0,#261CC0);"/>
 </td>
 <?php
 }
+
+function mostrar_oferta($oferta) {
+?>
+<tr>
+
+<td width="15%"><center>
+<?php
+echo $oferta["nombre_producto"];
+?>
+</td></center>
+
+<td width="15%"><center>
+<a href="verProducto.php?idSubasta=<?php echo $oferta["id_subasta"];?>">
+<?php
+echo '<img src="data:image/jpeg;base64,'.base64_encode($oferta["imagen"]).'" style="margin-left: 25px;  width: 150px;
+  height: 100px;"/>';
+?></a>
+</td></center>
+
+<td width="15%";><center>
+<?php
+$fecha = date_create($oferta["fecha"]);
+		echo date_format($fecha, 'd-m-Y'); ?><br><?php
+?>
+</td></center>
+
+<td width="10%"><center>
+<?php
+echo $oferta["monto"];
+?>
+</td></center>
+
+<td width="30%"><center>
+<?php
+echo $oferta["motivo"];
+?></center>
+</td>
+
+
+<?php
+}
+
+function mostrar_boton_pendiente($oferta) {
+?>
+<td width="15%">
+<form action="modificarOferta.php" method="post">
+<input name="id_subasta" type="hidden" value=<?php echo $oferta["id_subasta"]; ?>>
+<input name="id_oferta" type="hidden" value=<?php echo $oferta["id_oferta"]; ?>>
+<input name="monto" type="hidden" value=<?php echo $oferta["monto"]; ?>>
+<input name="motivo" type="hidden" value="<?php echo $oferta["motivo"]; ?>">
+<input type="submit" value="Modificar oferta" class="button" title="Modificar oferta"/>
+</form>
+</td>
+
+</tr>
+<?php
+}
+
+function mostrar_ganador($oferta) {
+?>
+<td width="15%"><center>
+<?php
+	if($oferta["id_ganador"] == NULL) {
+?>
+<img title="La subasta aún no tiene ganador" src="imagenes/iconos/Knob Help.png">
+<?php
+	}
+	else {
+		$query="SELECT *
+		FROM ganador
+		WHERE id_oferta = ".$oferta["id_oferta"];
+		$res=mysql_query($query);
+		if (mysql_num_rows($res) > 0) {
+?>
+<img title="Es ganador de la subasta" src="imagenes/iconos/Knob Valid Blue.png">
+<?php
+		}
+		else {
+	
+?>
+<img title="No es ganador de la subasta" src="imagenes/iconos/Knob Cancel.png">
+
+<?php
+		}
+	}
+?>
+</center></td>
+</tr>
+<?php
+}
 ?>

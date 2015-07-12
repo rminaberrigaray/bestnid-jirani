@@ -10,21 +10,23 @@
 		FROM oferta o
 		INNER JOIN subasta s ON o.id_subasta = s.id_subasta
 		INNER JOIN imagen i ON s.id_imagen = i.id_imagen
-		WHERE o.nombre_usuario = '".$_SESSION["nombre_usuario"]."'";
+		WHERE o.nombre_usuario = '".$_SESSION["nombre_usuario"]."'
+		AND s.fecha_fin > NOW()";
 		$result=mysql_query($sql);
 		if(mysql_num_rows($result) == 0) {
-			echo("<div class=\"mensaje\">Usted no ha realizado ninguna oferta</div>");
+			echo("<div class=\"mensaje\">Usted no tiene ninguna oferta pendiente</div>");
 		}
 		else {
 ?>
 
-<?php if(isset($_POST["msj_exito"])) {?> <div id="div_mensaje" class="exito"> <?php echo $_POST["msj_exito"]; ?> </div> <?php } ?>
+<?php if(isset($_POST["msj_exito"])) {?> <div class="exito"> <?php echo $_POST["msj_exito"]; ?> </div> <?php } ?>
+<?php if(isset($_POST["msj_mensaje"])) {?> <div class="mensaje"> <?php echo $_POST["msj_mensaje"]; ?> </div> <?php } ?>
 
 <table width="100%" align="center" border="1" style="margin: 15px 5px; background-color: white">
 
 <tr>
-<td valign="top" align="center" colspan="5" >
-<h3>Mis ofertas</h3>
+<td valign="top" align="center" colspan="6" >
+<h3>Mis ofertas pendientes</h3>
 </td>
 </tr>
 <tr class="encabezado">
@@ -45,50 +47,75 @@ Fecha
 Monto
 </td>
 
-<td width="45%">
+<td width="30%">
 Motivo
+</td>
+
+<td width="15%">
+
 </td>
 
 <?php
 			while($oferta=mysql_fetch_array($result)) {
+					mostrar_oferta($oferta);
+					mostrar_boton_pendiente($oferta);
+			}
+		}
 ?>
+</table>
+
+<?php
+ $sql="SELECT *,
+		o.descripcion AS motivo
+		FROM oferta o
+		INNER JOIN subasta s ON o.id_subasta = s.id_subasta
+		INNER JOIN imagen i ON s.id_imagen = i.id_imagen
+		WHERE o.nombre_usuario = '".$_SESSION["nombre_usuario"]."'
+		AND s.fecha_fin <= NOW()";
+		$result=mysql_query($sql);
+		if(mysql_num_rows($result) == 0) {
+			echo("<div class=\"mensaje\">Usted no tiene ofertas finalizadas</div>");
+		}
+		else {
+?>
+
+<table width="100%" align="center" border="1" style="margin: 15px 5px; background-color: white">
+
 <tr>
+<td valign="top" align="center" colspan="6" >
+<h3>Mis ofertas finalizadas</h3>
+</td>
+</tr>
+<tr class="encabezado">
 
-<td width="15%"><center>
-<?php
-echo $oferta["nombre_producto"];
-?>
-</td></center>
-
-<td width="15%"><center>
-<a href="verProducto.php?idSubasta=<?php echo $oferta["id_subasta"];?>">
-<?php
-echo '<img src="data:image/jpeg;base64,'.base64_encode($oferta["imagen"]).'" style="margin-left: 25px;  width: 150px;
-  height: 100px;"/>';
-?></a>
-</td></center>
-
-<td width="15%";><center>
-<?php
-$fecha = date_create($oferta["fecha"]);
-		echo date_format($fecha, 'd-m-Y'); ?><br><?php
-?>
-</td></center>
-
-<td width="10%"><center>
-<?php
-echo $oferta["monto"];
-?>
-</td></center>
-
-<td width="45%"><center>
-<?php
-echo $oferta["motivo"];
-?></center>
+<td width="15%">
+Producto
 </td>
 
-</tr>
-<?php				
+<td width="15%">
+Imagen
+</td>
+
+<td width="15%";>
+Fecha
+</td>
+
+<td width="10%">
+Monto
+</td>
+
+<td width="30%">
+Motivo
+</td>
+
+<td width="15%">
+Es ganador
+</td>
+
+<?php
+			while($oferta=mysql_fetch_array($result)) {
+					mostrar_oferta($oferta);
+					mostrar_ganador($oferta);
 			}
 		}
 ?>

@@ -7,34 +7,8 @@
 	if(!isset($_POST["id_subasta"])) {
 ?>
 
-<form id="mensaje3" action="index.php" method="post">
+<form id="mensaje2" action="index.php" method="post">
 <input type="hidden" name="msj_mensaje" value="No seleccionó una subasta válida">
-</form>
-
-<script type="text/javascript">
-    function enviarMsj3 () {
-        var frm = document.getElementById("mensaje3");
-        frm.submit();
-    }
-    window.onload = enviarMsj3;
-</script>	 
-
-<?php	 
-		die();
-	}
-	
-	$subasta=$_POST["id_subasta"];
-	$usr=$_SESSION["nombre_usuario"];
-	$sql="SELECT *
-	FROM oferta
-	WHERE id_subasta = ".$subasta."
-	AND nombre_usuario = '".$usr."'";
-	$result=mysql_query($sql);
-	if(mysql_num_rows($result) != 0) {
-?>
-
-<form id="mensaje2" action="ofertas.php" method="post">
-<input type="hidden" name="msj_mensaje" value="Ya realizó una oferta por este producto, puede modificarla si así lo desea">
 </form>
 
 <script type="text/javascript">
@@ -45,7 +19,7 @@
     window.onload = enviarMsj2;
 </script>	 
 
-<?php	   
+<?php	 
 		die();
 	}
 ?>
@@ -54,25 +28,25 @@
 
    <h4>
    <br>
-   <form enctype="multipart/form-data" name="oferta" method="post" action="addOferta.php">
+   <form enctype="multipart/form-data" name="oferta" method="post" action="editarOferta.php">
 	
      <label>Motivo por el cual quiere el producto:</label><br>
 	 <div id="div_descripcion"></div>
-     <textarea type="text" name="descripcion" cols="50" rows="5" maxlength="255" onKeyDown="cuenta()" onKeyUp="cuenta()"></textarea><br>
-   	 <div id="chars" style="font-size:12px">Caracteres restantes: 255</div>
+     <textarea type="text" name="descripcion" cols="50" rows="5" maxlength="255" onKeyDown="cuenta()" onKeyUp="cuenta()"><?php echo $_POST["motivo"]; ?></textarea><br>
+   	 <div id="chars" style="font-size:12px">Caracteres restantes: <?php echo 255 - strlen($_POST["motivo"]); ?></div>
 	 <br>
 	 
 	 <label>Monto ofrecido:</label><br>
 	 <div id="div_monto"></div>
-	 $<input name="monto" type="number"><br>
+	 $<input name="monto" type="number" value=<?php echo $_POST["monto"]; ?>><br>
 	 <br>
 	 <hr>
 	 
-	 <input type="hidden" name="id_subasta" value=<?php echo $_POST["id_subasta"]; ?>>
+	 <input type="hidden" name="id_oferta" value=<?php echo $_POST["id_oferta"]; ?>>
 	 
 	 <input type="button" value="Cancelar" title="Cancelar" onClick="history.back();" />
      &nbsp;&nbsp;
-     <input type="button" value="Realizar oferta" title="Realizar oferta" onClick="verificarOferta()"/>
+     <input type="button" value="Modificar oferta" title="Modificar oferta" onClick="verificarOferta()"/>
      
    </form>
    <h4>

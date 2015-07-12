@@ -25,7 +25,7 @@ INNER JOIN imagen i ON s.id_imagen = i.id_imagen
 INNER JOIN categoria c ON s.id_categoria= c.id_categoria
 WHERE s.nombre_usuario = '".$_SESSION["nombre_usuario"]."' 
 AND s.estado=0
-AND s.fecha_fin > CURDATE()
+AND s.fecha_fin > NOW()
 ORDER BY s.fecha_inicio desc";
 
 $result=mysql_query($consul);
@@ -83,7 +83,7 @@ FROM subasta s
 INNER JOIN imagen i ON s.id_imagen = i.id_imagen
 INNER JOIN categoria c ON s.id_categoria= c.id_categoria
 WHERE s.nombre_usuario = '".$_SESSION["nombre_usuario"]."'
-AND s.fecha_fin <= CURDATE()
+AND s.fecha_fin <= NOW()
 AND s.estado = 0
 ORDER BY s.fecha_inicio desc";
 
