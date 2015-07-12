@@ -39,7 +39,9 @@
    <ul class="nav">
 
         <li><a id="ventas" href="consultaVentas.php">Ventas entre dos fechas</a></li>
-		</li>		
+		</li>
+		<li><a id="usuarios" href="verUsuarios.php">Lista de usuarios</a></li>
+		</li>
    </ul>		
 </div>
 <br>
@@ -63,6 +65,7 @@
 </script>	 
 
 	 
-<?php	   
+<?php
+	die();
    }
 ?>
