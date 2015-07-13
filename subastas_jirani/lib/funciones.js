@@ -294,15 +294,23 @@ function verificarFechas() {
 	else return false;
 }
 
- window.addEventListener('load',inicio,false);
-    function inicio(){
+window.addEventListener('load',inicio,false);
+function inicio(){
      document.getElementById("comentario").addEventListener('submit',verificar,false);
-    }
+}
 	
-    function verificar(evt){
+function verificar(evt){
 	 var tex=document.getElementById("texto").value;
 	 if (tex.length == 0) {
 		document.getElementById("div_comentario").innerHTML="<div style=\"font-size:14px; color:red\">No ha escrito ningún comentario</div>";
 		 evt.preventDefault();
 	 }	
-    }
+}
+	
+function eliminarCuenta(user)
+{
+   if (confirm("Realmente desea eliminar su cuenta?"))
+   {
+      window.location="eliminarCuenta.php?usuario="+user;
+   }
+}

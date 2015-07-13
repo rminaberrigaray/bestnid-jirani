@@ -10,7 +10,7 @@
 	$sql="UPDATE subasta
 	SET id_ganador = ".$id_ganador."
 	WHERE id_subasta = ".$_POST["id_subasta"];
-	echo $sql;
+
 	$resul=mysql_query($sql);
 	
 ?>

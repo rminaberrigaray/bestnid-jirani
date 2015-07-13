@@ -22,7 +22,11 @@ require_once("conexion.php");
    <header>
    <div>
    <h4 style=" margin-left: 800px;
-    margin-top: -2px"><?php echo $_SESSION["nombre_usuario"]; ?>&nbsp &nbsp &nbsp <a href="salir.php">Cerrar Sesión</a>
+    margin-top: -2px"><?php echo $_SESSION["nombre_usuario"]; ?>&nbsp &nbsp &nbsp 
+	<a href="salir.php">Cerrar Sesión</a><br>
+	
+	<a href="javascript:void(0)" onClick="eliminarCuenta('<?php echo $_SESSION["nombre_usuario"];?>')" >
+    <input type="button" value="Eliminar cuenta" title="Eliminar Cuenta"/></a>
 	</div>
 	<div>
 	<?php

@@ -8,7 +8,7 @@ function mostrar_subasta($subasta) {
 <tr class="registros">
 
 <td width="30px"><center>
-<a href="verProducto.php?idSubasta=<?php echo $subasta["id_subasta"];?>">
+<a href="verProductoPropio.php?idSubasta=<?php echo $subasta["id_subasta"];?>">
 <?php
 echo '<img src="data:image/jpeg;base64,'.base64_encode($subasta["imagen"]).'" style="margin-left: 25px;  width: 150px;
   height: 100px;"/>';

@@ -10,20 +10,12 @@
 	s.nombre_usuario = '".$_SESSION["nombre_usuario"]."'";
 	
 	$resul=mysql_query($sql);
-	if(mysql_num_rows($resul) == 0)
-	{
-	     echo "<script type=''>
-	     alert('Usted no es dueño de la subasta, por lo tanto no puede responder esto');
-	     window.location='verProducto.php?idSubasta=+".$_POST["id_subasta"]."';
-         </script>";
-    }
-	else 
-	{
-     ?> 
-     <script type="text/javascript">
+    ?> 
+	 
+    <script type="text/javascript">
        var a = document.getElementById("index");
 	   a.className = "active";
-     </script>
+    </script>
 	 <h4>
      <form id="comentario" method="post" action="updateComentario.php">
 	
@@ -39,16 +31,25 @@
      
      </form>
      <br>  
-     <h4><?php
+     <h4>
+<?php	   
 	}
-   }
- else
-	   {
-	     echo "<script type=''>
-	     alert('Usted no se encuentra logueado');
-	     window.location='index.php';
-         </script>";
-	   }
+	else {
+?>
+<form id="mensaje" action="index.php" method="post">
+<input type="hidden" name="msj_mensaje" value="Usted no está logueado">
+</form>
+
+<script type="text/javascript">
+    function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+    }
+    window.onload = enviarMsj;
+</script>	 
+
+<?php	   
+	}
 ?>
 </body>  
 </html>

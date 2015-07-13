@@ -10,21 +10,37 @@
 	 texto_respuesta='".$_POST["texto"]."'
 	 WHERE id_comentario=".$_POST["idComentario"]."";
 	 $resul=mysql_query($sql);
-	
-	 echo "<script type=''>
-	     alert('Se ha enviado su respuesta');
-	     window.location='verProducto.php?idSubasta=+".$_POST["id_subasta"]."';
-         </script>";
-	 
-    }
+	 ?>
+	 <form id="mensaje" action="verProductoPropio.php" method="get">
+     <input type="hidden" name="idSubasta" value="<?php echo $_POST["id_subasta"] ?>">
+     <input type="hidden" name="msj_exito" value="Se ha enviado exitosamente su respuesta">
+     </form>
+
+     <script type="text/javascript">
+     function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+     }
+     window.onload = enviarMsj;
+     </script>
+   <?php 
+   }
 
    else
 	    {
-	     echo "<script type=''>
-	     alert('Usted no se encuentra logueado');
-	     window.location='index.php';
-         </script>";
-	    }
-	
-	die();
-?>
+	     ?>
+
+          <form id="mensaje" action="index.php" method="post">
+          <input type="hidden" name="msj_mensaje" value="Usted no está logueado">
+          </form>
+
+          <script type="text/javascript">
+          function enviarMsj () {
+             var frm = document.getElementById("mensaje");
+             frm.submit();
+            }
+          window.onload = enviarMsj;
+          </script>	
+		  <?php
+		}
+   ?>

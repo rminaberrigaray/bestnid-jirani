@@ -1,10 +1,6 @@
 <?php 
   session_start();
-  if((isset($_SESSION["nombre_usuario"])))
-  {
-	require_once("conexion.php");
-	include("vistaRegistrado.html");
-	
+  require_once("conexion.php");
   	  $sql="INSERT INTO comentario (nombre_usuario, fecha_hora_pregunta, texto_pregunta, 
 	  id_subasta, fecha_hora_respuesta, texto_respuesta)
 	  VALUES ('".$_SESSION["nombre_usuario"]."',
@@ -14,11 +10,44 @@
 	  null,null)";
 	
 	  $resul=mysql_query($sql);
-	
-	  echo "<script type=''>
-	     alert('Se ha enviado su comentario');
-	     window.location='verProducto.php?idSubasta=+".$_POST["id_subasta"]."';
-         </script>";
-	}
-	die();
 ?>
+<html>
+<head>
+</head>
+<body>
+<?php
+	if($_POST["prod_dueño"] == 1){
+?>
+    <form id="mensaje" action="verProductoPropio.php" method="get">
+    <input type="hidden" name="idSubasta" value="<?php echo $_POST["id_subasta"] ?>">
+    <input type="hidden" name="msj_exito" value="Se ha enviado exitosamente su comentario">
+    </form>
+
+    <script type="text/javascript">
+    function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+    }
+    window.onload = enviarMsj;
+    </script>
+<?php
+    }
+ else { ?>
+
+    <form id="mensaje" action="verProducto.php" method="get">
+    <input type="hidden" name="idSubasta" value="<?php echo $_POST["id_subasta"] ?>">
+    <input type="hidden" name="msj_exito" value="Se ha enviado exitosamente su comentario">
+    </form>
+
+    <script type="text/javascript">
+    function enviarMsj () {
+        var frm = document.getElementById("mensaje");
+        frm.submit();
+    }
+    window.onload = enviarMsj;
+    </script>
+<?php
+}
+?>
+</body>
+</html>

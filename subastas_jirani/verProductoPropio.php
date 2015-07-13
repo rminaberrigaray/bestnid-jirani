@@ -3,19 +3,14 @@
    session_start();
    if(isset($_SESSION["nombre_usuario"]))
    { 
-	include("vistaRegistrado.html");
-   }
-   
-   else     
-       {include("vistaVisitante.html");}
-  
+       include("vistaRegistrado.html");
  ?> 
 <script type="text/javascript">
-	var a = document.getElementById("index");
+	var a = document.getElementById("subastas");
 	a.className = "active";
 </script>
-
 <?php if(isset($_GET["msj_exito"])) {?> <div class="exito"> <?php echo $_GET["msj_exito"]; ?> </div> <?php } ?>
+<?php if(isset($_POST["msj_mensaje"])) {?> <div class="mensaje"> <?php echo $_POST["msj_mensaje"]; ?> </div> <?php } ?>
 
 <?php
 $consul="SELECT *
@@ -29,11 +24,7 @@ $subasta=mysql_fetch_array($result);
 ?>
 
 <div class="registros">
-<div> <h3>
-<form method="post" action="ofertar.php">
-<input type="hidden" name="id_subasta" value="<?php echo $subasta["id_subasta"]; ?>">
-<input style="margin-left:300px; margin-top:10px;" type="submit"  class="button" value="Ofertar" title="Ofertar">
-</form>
+
 <?php
 echo $subasta["nombre_producto"];?></h3></div><br>
 <?php
@@ -58,9 +49,6 @@ echo $subasta["nombre"];
 <hr>
 <h4>
     
-<?php  
-if(isset($_SESSION["nombre_usuario"]))
-  { ?>
     <br>
     <form id="comentario" method="post" action="comentario.php">
 	
@@ -68,7 +56,7 @@ if(isset($_SESSION["nombre_usuario"]))
 	 <div id="div_comentario"></div>
      <textarea type="text" id="texto" name="texto" cols="50" rows="5"></textarea>
 	 <br>
-     <input type="hidden" name="prod_dueño" value="0">
+     <input type="hidden" name="prod_dueño" value="1">
 	 <input type="hidden" name="id_subasta" value="<?php echo $subasta["id_subasta"];?>">
 	
      <input type="submit" value="Enviar" title="Enviar" /> 
@@ -100,6 +88,16 @@ while($coment=mysql_fetch_array($result)) {
 	 </div>
     
 	 <?php
+	 if($coment["texto_respuesta"] == null)
+	 { ?>
+	   <form name="comentario" method="post" action="respuesta.php">
+	   <input type="hidden" name="idComentario" value="<?php echo $coment["id_comentario"]; ?>">
+	   <input type="hidden" name="id_subasta" value="<?php echo $coment["id_subasta"];?>">
+	   <input type="submit" name="respuesta" value="Responder" title="Responder"/>
+	   </form><br>
+       <?php
+	 }
+	  else {
 		if($coment["texto_respuesta"] != null)
 	    { ?>
 	    <div style="margin-left: 50px;">
@@ -113,6 +111,7 @@ while($coment=mysql_fetch_array($result)) {
 		</div>
 	    <?php
 	   }
+	  }
 }
 ?>
 
