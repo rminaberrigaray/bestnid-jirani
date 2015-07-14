@@ -309,8 +309,16 @@ function verificar(evt){
 	
 function eliminarCuenta(user)
 {
-   if (confirm("Realmente desea eliminar su cuenta?"))
+   if (confirm("¿Realmente desea eliminar su cuenta?"))
    {
       window.location="eliminarCuenta.php?usuario="+user;
+   }
+}
+
+function eliminarOferta(idOferta)
+{
+   if (confirm("¿Realmente desea eliminar la oferta?"))
+   {
+      window.location="eliminarOferta.php?idOferta="+idOferta;
    }
 }

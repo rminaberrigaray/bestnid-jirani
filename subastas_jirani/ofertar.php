@@ -28,7 +28,8 @@
 	$sql="SELECT *
 	FROM oferta
 	WHERE id_subasta = ".$subasta."
-	AND nombre_usuario = '".$usr."'";
+	AND nombre_usuario = '".$usr."'
+	AND eliminado IS NULL";
 	$result=mysql_query($sql);
 	if(mysql_num_rows($result) != 0) {
 ?>

@@ -11,7 +11,8 @@
 		INNER JOIN subasta s ON o.id_subasta = s.id_subasta
 		INNER JOIN imagen i ON s.id_imagen = i.id_imagen
 		WHERE o.nombre_usuario = '".$_SESSION["nombre_usuario"]."'
-		AND s.fecha_fin > NOW()";
+		AND s.fecha_fin > NOW()
+		AND eliminado IS NULL";
 		$result=mysql_query($sql);
 		if(mysql_num_rows($result) == 0) {
 			echo("<div class=\"mensaje\">Usted no tiene ninguna oferta pendiente</div>");
@@ -25,7 +26,7 @@
 <table width="100%" align="center" border="1" style="margin: 15px 5px; background-color: white">
 
 <tr>
-<td valign="top" align="center" colspan="6" >
+<td valign="top" align="center" colspan="7" >
 <h3>Mis ofertas pendientes</h3>
 </td>
 </tr>
@@ -39,7 +40,7 @@ Producto
 Imagen
 </td>
 
-<td width="15%";>
+<td width="10%";>
 Fecha
 </td>
 
@@ -47,8 +48,12 @@ Fecha
 Monto
 </td>
 
-<td width="30%">
+<td width="20%">
 Motivo
+</td>
+
+<td width="15%">
+
 </td>
 
 <td width="15%">
@@ -71,7 +76,8 @@ Motivo
 		INNER JOIN subasta s ON o.id_subasta = s.id_subasta
 		INNER JOIN imagen i ON s.id_imagen = i.id_imagen
 		WHERE o.nombre_usuario = '".$_SESSION["nombre_usuario"]."'
-		AND s.fecha_fin <= NOW()";
+		AND s.fecha_fin <= NOW()
+		AND eliminado IS NULL";
 		$result=mysql_query($sql);
 		if(mysql_num_rows($result) == 0) {
 			echo("<div class=\"mensaje\">Usted no tiene ofertas finalizadas</div>");

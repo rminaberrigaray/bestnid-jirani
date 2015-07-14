@@ -92,7 +92,7 @@ echo '<img src="data:image/jpeg;base64,'.base64_encode($oferta["imagen"]).'" sty
 ?></a>
 </td></center>
 
-<td width="15%";><center>
+<td width="10%";><center>
 <?php
 $fecha = date_create($oferta["fecha"]);
 		echo date_format($fecha, 'd-m-Y'); ?><br><?php
@@ -105,7 +105,7 @@ echo $oferta["monto"];
 ?>
 </td></center>
 
-<td width="30%"><center>
+<td width="20%"><center>
 <?php
 echo $oferta["motivo"];
 ?></center>
@@ -117,7 +117,7 @@ echo $oferta["motivo"];
 
 function mostrar_boton_pendiente($oferta) {
 ?>
-<td width="15%">
+<td width="15%"><center>
 <form action="modificarOferta.php" method="post">
 <input name="id_subasta" type="hidden" value=<?php echo $oferta["id_subasta"]; ?>>
 <input name="id_oferta" type="hidden" value=<?php echo $oferta["id_oferta"]; ?>>
@@ -125,7 +125,14 @@ function mostrar_boton_pendiente($oferta) {
 <input name="motivo" type="hidden" value="<?php echo $oferta["motivo"]; ?>">
 <input type="submit" value="Modificar oferta" class="button" title="Modificar oferta"/>
 </form>
-</td>
+</center></td>
+
+<td width="15%"> <center>
+
+<a href="javascript:void(0)" onClick="eliminarOferta(<?php echo $oferta["id_oferta"];?>)" >
+<input type="button" value="Eliminar oferta" class="button" title="Eliminar oferta"/> </a>
+
+</center></td>
 
 </tr>
 <?php

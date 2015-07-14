@@ -7,7 +7,7 @@
    where
    nombre_usuario='".$_POST["nom"]."' and
    contraseña='".$_POST["clave"]."' and 
-   eliminado = 0
+   eliminado IS NULL
    ";
     $resul=mysql_query($consul);
     if(mysql_num_rows($resul) == 0)
