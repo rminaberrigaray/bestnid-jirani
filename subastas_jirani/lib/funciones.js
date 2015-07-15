@@ -25,15 +25,9 @@ function limpiar()
 
 function valida_cadena(texto)
 {
-   var RegExPattern = "[1-9]";
-   if (texto.match(RegExPattern))
-   {
-      return false;
-   }
-   else
-   {
-      return true;
-   }
+	var reg = /^([a-z ' ñáéíóú]{2,60})$/i;
+	if(reg.test(texto)) return true;
+		else return false;
 }
 
 function valida_correo(correo)
@@ -65,7 +59,7 @@ function validarReg()
 	   if(!valida_cadena(f.nombre.value))
 	   {
 	   
-	     document.getElementById("div_name").innerHTML="<div style=\"font-size:13px; color:red\">Por favor ingrese solo letras para su nombre</div>";
+	     document.getElementById("div_name").innerHTML="<div style=\"font-size:13px; color:red\">Por favor ingrese un nombre válido</div>";
          f.nombre.value="";
 	     f.nombre.focus();
          return false;
@@ -88,7 +82,7 @@ function validarReg()
 	   
 	   if(!valida_cadena(f.apellido.value))
 	   {	   
-	     document.getElementById("div_apellido").innerHTML="<div style=\"font-size:13px; color:red\">Por favor ingrese solo letras para su apellido</div>";
+	     document.getElementById("div_apellido").innerHTML="<div style=\"font-size:13px; color:red\">Por favor ingrese un apellido válido</div>";
          f.apellido.value="";
 	     f.apellido.focus();
          return false;
@@ -321,4 +315,35 @@ function eliminarOferta(idOferta)
    {
       window.location="eliminarOferta.php?idOferta="+idOferta;
    }
+}
+
+function mostrarOcultar() {
+	var pass = document.getElementById("pass");
+	var button = document.getElementById("swap");
+	if (pass.type == "password") {
+		pass.type = "text";
+		button.innerHTML = "ocultar";
+	}
+	else {
+		pass.type = "password";
+		button.innerHTML = "mostrar";
+	}
+}
+
+function checkName(input) {
+	if(input.validity.patternMismatch){
+		input.setCustomValidity("Ingrese un nombre válido");
+	}
+	else {
+		input.setCustomValidity('');
+	}
+}
+
+function checkSurname(input) {
+	if(input.validity.patternMismatch){
+		input.setCustomValidity("Ingrese un apellido válido");
+	}
+	else {
+		input.setCustomValidity('');
+	}
 }
