@@ -20,11 +20,12 @@
 <body onLoad="limpiar();" >
 	<div class="contenedor">
    <header>
-   <div>
+   <div style="font-size: 14px;">
+   <a href="perfil.php">
    <h4 style=" margin-left: 800px;
-    margin-top: -2px"><?php echo $_SESSION["nombre_usuario"]; ?>&nbsp &nbsp &nbsp <a href="salir.php">Cerrar Sesión</a>
+    margin-top: -2px"><?php echo $_SESSION["nombre_usuario"]; ?></a>&nbsp &nbsp &nbsp <a href="salir.php">Cerrar Sesión</a>
 	</div>
-	<div>
+	<div style="font-size: 14px;">
 	<?php
 			echo('<a href="index.php" title="Funciones usuario registrado" style="margin-left: 800px">Funciones usuario registrado</a>');
 	?>

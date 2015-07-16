@@ -10,6 +10,7 @@ background-attachment:fixed;
 width:100%;
 max-width:1000px;
 margin: 0 auto;
+font-family: Tahoma;
 
 }
 
@@ -230,6 +231,7 @@ header
   margin: 0 -23px 0 -15px;
   margin-left: 25px;
   margin-top: 20px;
+  font-size: 15px;
 }
 
 .item.box.normal {
@@ -290,7 +292,7 @@ header
   color: #FFFFFF;
   }
 .registros {
-   color: rgba(117, 38, 38, 1);
+   color: rgba(0, 0, 0, 1);
 }
 
 .comentario {

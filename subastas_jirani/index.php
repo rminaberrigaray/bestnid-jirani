@@ -65,22 +65,24 @@
 
 <div class="products">
    <div class="item box normal cent active" id="item_box_3994">
-     <div style="center"><?php echo ($subasta["nombre_producto"]); ?> 
+     <div style="text-align: center"><?php echo ($subasta["nombre_producto"]); ?> 
 	 </div>
 	 <br>
-	 <div>
+	 <div style="border: 1px solid grey; margin: 0 10px">
+	   <center>
 	   <a href="verProducto.php?idSubasta=<?php echo $subasta["id_subasta"];?>">
-	    <?php echo '<img src="data:image/*;base64,'.base64_encode($subasta["imagen"]).'" style="margin-left: 25px;
-		width: 170px;height: 150px;"/>'; 
-	     ?></a>
+	    <?php echo '<img src="data:image/*;base64,'.base64_encode($subasta["imagen"]).'" style="width: 170px;height: 150px;"/>';
+	     ?>
+	   </a>
+	   </center>
 	 </div>
 	 <br>
-	 <div class="inicio">Inicio de subasta: <?php 
+	 <div style="margin-left: 10px">Inicio de subasta: <br> <?php 
 		$fecha = date_create($subasta["fecha_inicio"]);
 		echo date_format($fecha, 'd-m-Y H:i:s'); 
 	 ?> </div>
 	 <br>
-	 <div class="fin">Fin de subasta: <?php 
+	 <div style="margin-left: 10px">Fin de subasta: <br> <?php 
 		$fecha = date_create($subasta["fecha_fin"]);
 		echo date_format($fecha, 'd-m-Y H:i:s');
 	 ?> </div>

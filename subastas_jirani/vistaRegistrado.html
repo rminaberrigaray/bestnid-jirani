@@ -20,14 +20,14 @@ require_once("conexion.php");
 <body onLoad="limpiar();" >
 	<div class="contenedor">
    <header>
-   <div>
+   <div style="font-size: 14px;">
    <a href="perfil.php">
    <h4 style=" margin-left: 800px;
     margin-top: -2px"><?php echo $_SESSION["nombre_usuario"]; ?></a>&nbsp &nbsp &nbsp 
 	<a href="salir.php">Cerrar Sesión</a><br>
 	
 	</div>
-	<div>
+	<div style="font-size: 14px;">
 	<?php
 		$consul="select * from administrador
 		where
