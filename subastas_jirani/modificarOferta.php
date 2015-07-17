@@ -29,24 +29,18 @@
    <h4>
    <br>
    <form enctype="multipart/form-data" name="oferta" method="post" action="editarOferta.php">
-	
-     <label>Motivo por el cual quiere el producto:</label><br>
-	 <div id="div_descripcion"></div>
-     <textarea type="text" name="descripcion" cols="50" rows="5" maxlength="255" onKeyDown="cuenta()" onKeyUp="cuenta()"><?php echo $_POST["motivo"]; ?></textarea><br>
-   	 <div id="chars" style="font-size:12px">Caracteres restantes: <?php echo 255 - strlen($_POST["motivo"]); ?></div>
-	 <br>
 	 
-	 <label>Monto ofrecido:</label><br>
+	 <label>Nuevo monto:</label><br>
 	 <div id="div_monto"></div>
-	 $<input name="monto" type="number" value=<?php echo $_POST["monto"]; ?>><br>
+	 $<input name="monto" type="number" min=1 value=<?php echo $_POST["monto"]; ?>><br>
 	 <br>
 	 <hr>
 	 
 	 <input type="hidden" name="id_oferta" value=<?php echo $_POST["id_oferta"]; ?>>
 	 
-	 <input type="button" value="Cancelar" title="Cancelar" onClick="history.back();" />
+	 <input type="submit" value="Modificar oferta" title="Modificar oferta" />
+	 <input type="button" value="Cancelar" title="Cancelar" onClick="location.href = 'ofertas.php';" />
      &nbsp;&nbsp;
-     <input type="button" value="Modificar oferta" title="Modificar oferta" onClick="verificarOferta()"/>
      
    </form>
    <h4>

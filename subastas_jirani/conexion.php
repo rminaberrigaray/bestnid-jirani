@@ -123,7 +123,7 @@ function mostrar_boton_pendiente($oferta) {
 <input name="id_oferta" type="hidden" value=<?php echo $oferta["id_oferta"]; ?>>
 <input name="monto" type="hidden" value=<?php echo $oferta["monto"]; ?>>
 <input name="motivo" type="hidden" value="<?php echo $oferta["motivo"]; ?>">
-<input type="submit" value="Modificar oferta" class="button" title="Modificar oferta"/>
+<input type="submit" value="Modificar monto" class="button" title="Modificar monto"/>
 </form>
 </center></td>
 

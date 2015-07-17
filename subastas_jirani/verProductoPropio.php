@@ -47,21 +47,6 @@ echo $subasta["nombre"];
 ?></div><br>
 </div>
 <hr>
-<h4>
-    
-    <br>
-    <form id="comentario" method="post" action="comentario.php">
-	
-     <label>Comentario:</label><br>
-	 <div id="div_comentario"></div>
-     <textarea type="text" id="texto" name="texto" cols="50" rows="5"></textarea>
-	 <br>
-     <input type="hidden" name="prod_dueño" value="1">
-	 <input type="hidden" name="id_subasta" value="<?php echo $subasta["id_subasta"];?>">
-	
-     <input type="submit" value="Enviar" title="Enviar" /> 
-   </form>
-   
    
 	<br>
 <?php
@@ -73,6 +58,7 @@ echo $subasta["nombre"];
 	WHERE c.id_subasta  =".$_GET["idSubasta"]."
 	ORDER BY c.fecha_hora_pregunta DESC";
     $result=mysql_query($consul);
+	$id=0;
 	
 while($coment=mysql_fetch_array($result)) {
 ?>
@@ -90,10 +76,11 @@ while($coment=mysql_fetch_array($result)) {
 	 <?php
 	 if($coment["texto_respuesta"] == null)
 	 { ?>
-	   <form name="comentario" method="post" action="respuesta.php">
+	   <form name="comentario" method="post" action="updateComentario.php">
+	   <input type="button" value="Responder" title="Responder" onclick="<?php echo "responder(this, ".$id.")" ?>" >
+	   <div id=<?php echo $id++; ?>></div>
 	   <input type="hidden" name="idComentario" value="<?php echo $coment["id_comentario"]; ?>">
 	   <input type="hidden" name="id_subasta" value="<?php echo $coment["id_subasta"];?>">
-	   <input type="submit" name="respuesta" value="Responder" title="Responder"/>
 	   </form><br>
        <?php
 	 }

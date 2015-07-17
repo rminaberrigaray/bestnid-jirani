@@ -347,3 +347,17 @@ function checkSurname(input) {
 		input.setCustomValidity('');
 	}
 }
+
+function responder(input, id) {
+	div = document.getElementById(id);
+	if (input.value == "Responder") {
+		input.value="Ocultar";
+		input.title="Ocultar";
+		div.innerHTML='<textarea type="text" id="texto" name="texto" cols="50" rows="5" required></textarea> <br> <input type="submit" name="respuesta" value="Responder" title="Responder"/>';
+	}
+	else {
+		input.value="Responder";
+		input.title="Responder";
+		div.innerHTML="";
+	}
+}

@@ -3,9 +3,7 @@
 	require_once("conexion.php");
 	
 	$sql="update oferta set
-	descripcion = '".$_POST["descripcion"]."',
-	monto = '".$_POST["monto"]."',
-	fecha = CURDATE()
+	monto = '".$_POST["monto"]."'
 	WHERE id_oferta=".$_POST["id_oferta"]."";
 	
 	$res=mysql_query($sql);
