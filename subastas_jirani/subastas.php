@@ -34,8 +34,8 @@ if (($result != false) && (mysql_num_rows($result) > 0)) {
 <table width="100%" align="left" border="1" style="margin: 15px 5px; background-color: white">
 
 <tr>
-<td valign="top" align="center" colspan="6" >
-<h3>Subastas activas</h3>
+<td class="caption" colspan="6" >
+Subastas activas
 </td>
 </tr>
 <tr class="encabezado">
@@ -93,8 +93,8 @@ if (($result != false) && (mysql_num_rows($result) > 0)) {
 <table width="100%" align="left" border="1" style="margin: 15px 5px; background-color: white">
 
 <tr>
-<td valign="top" align="center" colspan="5" >
-<h3>Subastas finalizadas</h3>
+<td class="caption" colspan="5" >
+Subastas finalizadas
 </td>
 </tr>
 <tr class="encabezado">

@@ -60,12 +60,14 @@
 	$cant=mysql_num_rows($result);
 ?>
 
-Cantidad de usuarios listados: <?php echo $cant; ?>
+Cantidad de usuarios listados: <?php echo $cant; 
+if ($cant != 0 ) {
+?>
 <table width="80%" border="1" style="background-color: white">
 
 <tr>
-<td valign="top" align="center" colspan="4" >
-<h3>Usuarios registrados</h3>
+<td class="caption" colspan="4" >
+Usuarios registrados
 </td>
 </tr>
 <tr class="encabezado">
@@ -118,5 +120,6 @@ Email
 </tr>
 <?php
 	}
+}
 ?>
 </table>

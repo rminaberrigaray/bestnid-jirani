@@ -26,8 +26,8 @@
 <table width="100%" align="center" border="1" style="margin: 15px 5px; background-color: white">
 
 <tr>
-<td valign="top" align="center" colspan="7" >
-<h3>Mis ofertas pendientes</h3>
+<td class="caption" colspan="7" >
+Mis ofertas pendientes
 </td>
 </tr>
 <tr class="encabezado">
@@ -88,8 +88,8 @@ Motivo
 <table width="100%" align="center" border="1" style="margin: 15px 5px; background-color: white">
 
 <tr>
-<td valign="top" align="center" colspan="6" >
-<h3>Mis ofertas finalizadas</h3>
+<td class="caption" colspan="6" >
+Mis ofertas finalizadas
 </td>
 </tr>
 <tr class="encabezado">

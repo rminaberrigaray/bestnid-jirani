@@ -39,7 +39,7 @@
    <div class="menu" style="margin-top:0px">
    <ul class="nav">
 
-        <li><a id="ventas" href="consultaVentas.php">Ventas entre dos fechas</a></li>
+        <li><a id="ventas" href="listarVentas.php">Ventas entre dos fechas</a></li>
 		</li>
 		<li><a id="usuarios" href="verUsuarios.php">Lista de usuarios</a></li>
 		</li>

@@ -265,10 +265,19 @@ header
 
 .encabezado
 {
-   background-color:#676767;
+   background-image:url(imagenes/bg_th.gif);
    color:#FFFFFF;
-   font-weight:bold;
    text-align: center;
+}
+
+.caption
+{
+   background-image:url(imagenes/bg_caption.gif);
+   color:#FFFFFF;
+   text-align: center;
+   height: 50px;
+   font-weight: bold;
+   font-size: 17px;
 }
 
 .button

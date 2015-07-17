@@ -69,8 +69,8 @@ die();
 <table width="100%" align="center" border="1" style="margin: 15px 5px; background-color: white">
 
 <tr>
-<td valign="top" align="center" colspan="5" >
-<h3>Ofertas para "<?php echo $subasta["nombre_producto"];?>"</h3>
+<td class="caption" colspan="5" >
+Ofertas para "<?php echo $subasta["nombre_producto"];?>"
 </td>
 </tr>
 <tr class="encabezado">
