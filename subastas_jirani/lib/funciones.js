@@ -139,7 +139,7 @@ function validarReg()
 
 function eliminarSubasta(id)
 {
-   if (confirm("Realmente desea eliminar la subasta?"))
+   if (confirm("¿Realmente desea eliminar la subasta?"))
    {
       window.location="eliminarSubasta.php?idSubasta="+id;
    }
@@ -222,9 +222,6 @@ function verificarSubasta() {
 function cuenta() {
 	document.getElementById("chars").innerHTML = "Caracteres restantes: " + (255 - document.oferta.descripcion.value.length);
 }
-function cuentaCom() {
-	document.getElementById("chars").innerHTML = "Caracteres restantes: " + (255 - document.comentario.texto.value.length);
-}
 
 function verificarOferta() {
 	var f = document.oferta;
@@ -301,13 +298,6 @@ function verificar(evt){
 	 }	
 }
 	
-function eliminarCuenta(user)
-{
-   if (confirm("¿Realmente desea eliminar su cuenta?"))
-   {
-      window.location="eliminarCuenta.php?usuario="+user;
-   }
-}
 
 function eliminarOferta(idOferta)
 {
@@ -316,6 +306,7 @@ function eliminarOferta(idOferta)
       window.location="eliminarOferta.php?idOferta="+idOferta;
    }
 }
+
 
 function mostrarOcultar() {
 	var pass = document.getElementById("pass");
@@ -346,6 +337,30 @@ function checkSurname(input) {
 	else {
 		input.setCustomValidity('');
 	}
+}
+
+
+function validarCategoria()
+{
+	var f = document.categoria;
+	if(f.nombre.value == 0)
+    {
+	     document.getElementById("div_name").innerHTML="<div style=\"font-size:13px; color:red\">El campo Nombre está vacío</div>";
+         f.nombre.focus();
+         return false;
+    }
+	else{ document.getElementById("div_name").innerHTML="";}
+ 
+	if(!valida_cadena(f.nombre.value))
+	{
+	   
+	     document.getElementById("div_name").innerHTML="<div style=\"font-size:13px; color:red\">Por favor ingrese solo letras para el nombre</div>";
+         f.nombre.value="";
+	     f.nombre.focus();
+         return false;
+    }
+	else{document.getElementById("div_name").innerHTML="";}
+	f.submit();
 }
 
 function responder(input, id) {

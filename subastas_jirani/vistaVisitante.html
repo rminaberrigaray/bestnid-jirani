@@ -5,7 +5,6 @@
 <?php
 require_once("conexion.php");
 ?>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -50,8 +49,10 @@ require_once("conexion.php");
    <ul class="nav">
 	     <li><a id="categoria" href="#">Categoría</a>
 	       <ul>
-		   <?php
-			$consul="SELECT * FROM categoria";
+		    <?php
+			$consul="SELECT * FROM categoria
+			where eliminado = 0
+			order by nombre asc";
 			$result=mysql_query($consul);
 			while($categoria=mysql_fetch_array($result)) {
 			?>

@@ -46,9 +46,13 @@
 <?php
      $consul="SELECT *
      FROM subasta s
-     INNER JOIN imagen i ON s.id_imagen = i.id_imagen
-	 where s.estado=0
-	 and s.fecha_fin >= NOW()";
+     INNER JOIN imagen i ON s.id_imagen = i.id_imagen";
+	 if(isset($_GET["categoria"])) {
+		$consul=$consul." INNER JOIN categoria c ON s.id_categoria = c.id_categoria
+		WHERE c.nombre = '".$_GET["categoria"]."' ";
+	 }
+	 
+	 $consul=$consul." and s.estado = 0 and s.fecha_fin >= NOW()";
 	 if(isset($_SESSION["nombre_usuario"])){
 	   $consul=$consul." and s.nombre_usuario != '".$_SESSION["nombre_usuario"]."'"; }
 	 

@@ -1,15 +1,21 @@
 <?php 
-	session_start();
+	if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }
 	require_once("conexion.php");
 	if((isset($_SESSION["nombre_usuario"])))
-	{
+	 {
 		include("vistaRegistrado.html");
 		$sql="SELECT *
 		FROM usuario
 		WHERE nombre_usuario = '".$_SESSION["nombre_usuario"]."'";
 		$result=mysql_query($sql);
-		$usr=mysql_fetch_array($result);
+      	$usr=mysql_fetch_array($result);
 ?>
+
+<?php if(isset($_POST["msj_exito"])) {?> <div class="exito"> <?php echo $_POST["msj_exito"]; ?> </div> <?php } ?>
+<?php if(isset($_POST["msj_error"])) {?> <div class="error"> <?php echo $_POST["msj_error"]; ?> </div> <?php } ?>
 
 <style>
 	input.perf {
@@ -26,8 +32,6 @@
 		width: 40%;
 	}
 </style>
-
-<?php if(isset($_POST["msj_exito"])) {?> <div class="exito"> <?php echo $_POST["msj_exito"]; ?> </div> <?php } ?>
 
 <form name="modificar" action="editarCuenta.php" method="post">
 
@@ -61,7 +65,7 @@
 <input type="submit" value="Guardar cambios" class="button" title="Guardar cambios" />
 </form>
 &nbsp &nbsp &nbsp
-<a href="javascript:void(0)" onClick="eliminarCuenta('<?php echo $_SESSION["nombre_usuario"];?>')" >
+<a href="eliminarCuenta.php" >
 <input type="button" value="Eliminar mi cuenta" class="button" title="Eliminar mi cuenta"/></a>
 
 </center>
@@ -85,4 +89,4 @@
 
 <?php	   
 	}
-?>
+	?>

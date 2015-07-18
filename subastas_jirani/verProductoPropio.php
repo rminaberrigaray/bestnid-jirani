@@ -24,7 +24,7 @@ $subasta=mysql_fetch_array($result);
 ?>
 
 <div class="registros">
-
+<h3>
 <?php
 echo $subasta["nombre_producto"];?></h3></div><br>
 <?php
@@ -48,7 +48,7 @@ echo $subasta["nombre"];
 </div>
 <hr>
    
-	<br>
+<br><h4 style="font-family: Tahoma;">
 <?php
   }
    $consul="SELECT *, 
@@ -101,6 +101,6 @@ while($coment=mysql_fetch_array($result)) {
 	  }
 }
 ?>
-
+</h4>
 </body>  
 </html>

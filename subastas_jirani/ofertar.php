@@ -71,11 +71,11 @@
 	 
 	 <input type="hidden" name="id_subasta" value=<?php echo $_POST["id_subasta"]; ?>>
 	 
-	 <input type="button" value="Cancelar" title="Cancelar" onClick="history.back();" />
+	 <input type="button" value="Realizar oferta" title="Realizar oferta" onClick="verificarOferta()"/>
      &nbsp;&nbsp;
-     <input type="button" value="Realizar oferta" title="Realizar oferta" onClick="verificarOferta()"/>
+	 <input type="button" value="Cancelar" title="Cancelar" onClick="location.href = 'verProducto.php?idSubasta=<?php echo $_POST["id_subasta"]; ?>';" /></a>
      
-   </form>
+    </form>
    <h4>
 
 

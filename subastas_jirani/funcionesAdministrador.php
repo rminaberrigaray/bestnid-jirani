@@ -1,6 +1,9 @@
 <?php
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }
 	require_once("conexion.php");
-	session_start();
 	$consul="select * from administrador
 	where
 	nombre_usuario='".$_SESSION["nombre_usuario"]."'";
@@ -40,9 +43,11 @@
    <ul class="nav">
 
         <li><a id="ventas" href="listarVentas.php">Ventas entre dos fechas</a></li>
-		</li>
+		
 		<li><a id="usuarios" href="verUsuarios.php">Lista de usuarios</a></li>
-		</li>
+		
+		<li><a id="categorias" href="verCategorias.php">Administrar categorias</a></li>
+		
    </ul>		
 </div>
 <br>

@@ -33,8 +33,10 @@
      <?php 
 	 $id=  $reg["id_categoria"];
 	 $consul="SELECT * FROM categoria
-     WHERE id_categoria NOT IN (SELECT id_categoria
-     FROM categoria WHERE id_categoria = '$id' )";
+     WHERE eliminado = 0 and
+	 id_categoria NOT IN (SELECT id_categoria
+     FROM categoria WHERE id_categoria = '$id' )
+	 order by nombre asc";
      $result=mysql_query($consul);
 	 
      while($categoria=mysql_fetch_array($result))
@@ -102,9 +104,11 @@
 	 <input type="hidden" name="id_imagen" value="<?php echo $reg["id_imagen"];?>">
 	 <input type="hidden" name="fecha_fin" value="<?php echo date("Y-M-d", strtotime("+15 days"));?>">
 	 
-	 <input type="button" value="Cancelar" title="Cancelar" onClick="history.back();" />
-     &nbsp;&nbsp;
-     <input type="button" value="Modificar subasta" title="Modificar subasta" onClick="verificarSubasta()"/>
+	 <input type="button" value="Modificar subasta" title="Modificar subasta" onClick="verificarSubasta()"/>
+	 &nbsp;&nbsp;
+	 <input type="button" value="Cancelar" title="Cancelar" onClick="location.href = 'subastas.php';" />
+     
+     
      
    </form>
    <h4>

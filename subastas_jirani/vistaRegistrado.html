@@ -23,8 +23,8 @@ require_once("conexion.php");
    <div style="font-size: 14px;">
    <a href="perfil.php">
    <h4 style=" margin-left: 800px;
-    margin-top: -2px"><?php echo $_SESSION["nombre_usuario"]; ?></a>&nbsp &nbsp &nbsp 
-	<a href="salir.php">Cerrar Sesión</a><br>
+   margin-top: -2px"><?php echo $_SESSION["nombre_usuario"]; ?></a>&nbsp &nbsp &nbsp 
+   <a href="salir.php">Cerrar Sesión</a><br>
 	
 	</div>
 	<div style="font-size: 14px;">
@@ -50,7 +50,9 @@ require_once("conexion.php");
 	     <li><a id="categoria" href="#">Categoría</a>
 	       <ul>
 		   <?php
-			$consul="SELECT * FROM categoria";
+			$consul="SELECT * FROM categoria 
+			WHERE eliminado = 0
+			order by nombre asc";
 			$result=mysql_query($consul);
 			while($categoria=mysql_fetch_array($result)) {
 			?>

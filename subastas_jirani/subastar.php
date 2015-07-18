@@ -42,7 +42,9 @@
      <select name="categoria">
      <option value="0">Seleccione una categoria</option>
      <?php
-	 $consul="SELECT * FROM categoria";
+	 $consul="SELECT * FROM categoria
+	 WHERE eliminado = 0 
+	 order by nombre asc";
      $result=mysql_query($consul);
 	 
      while($categoria=mysql_fetch_array($result))
@@ -103,9 +105,11 @@
 	 <input name="hora" type="time" value="00:00"> <br>
 	 <br>
 	 <hr>
-	 <input type="button" value="Cancelar" title="Cancelar" onClick="history.back();" />
-     &nbsp;&nbsp;
-     <input type="button" value="Crear subasta" title="Crear subasta" onClick="verificarSubasta()"/>
+	 <input type="button" value="Crear subasta" title="Crear subasta" onClick="verificarSubasta()"/>
+	 &nbsp;&nbsp;
+	 <input type="button" value="Cancelar" title="Cancelar" onClick="location.href = 'subastas.php';" />
+     
+     
      
    </form>
    <h4>
