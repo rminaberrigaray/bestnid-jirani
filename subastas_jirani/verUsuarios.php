@@ -47,13 +47,14 @@
 </form>
 
 <?php
-	$sql="SELECT * FROM usuario";
+	$sql="SELECT * FROM usuario
+	WHERE eliminado IS NULL";
 	if(isset ($_POST["fecha_ini"])) {
 		$fec_ini=strtotime($_POST["fecha_ini"]);
 		$fec_ini=date("Y-m-d", $fec_ini);
 		$fec_fin=strtotime($_POST["fecha_fin"]);
 		$fec_fin=date("Y-m-d", $fec_fin);
-		$sql=$sql." WHERE fecha_alta BETWEEN '".$fec_ini."' AND '".$fec_fin."'";
+		$sql=$sql." AND fecha_alta BETWEEN '".$fec_ini."' AND '".$fec_fin."'";
 	}
 	$sql=$sql." ORDER BY fecha_alta";
 	$result=mysql_query($sql);

@@ -55,7 +55,7 @@ require_once("conexion.php");
 			$result=mysql_query($consul);
 			while($categoria=mysql_fetch_array($result)) {
 			?>
-			<li><a href="#"><?php echo $categoria["nombre"]; ?></a></li>
+			<li><a href="<?php echo "verCategoria.php?cat=".$categoria["nombre"]; ?>"><?php echo $categoria["nombre"]; ?></a></li>
 			<?php
 			}
 			?>

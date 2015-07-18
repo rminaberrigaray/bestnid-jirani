@@ -12,13 +12,19 @@
 		INNER JOIN imagen i ON s.id_imagen = i.id_imagen
 		WHERE o.nombre_usuario = '".$_SESSION["nombre_usuario"]."'
 		AND s.fecha_fin > NOW()
-		AND eliminado IS NULL";
+		AND eliminado IS NULL
+		ORDER BY o.fecha desc";
 		$result=mysql_query($sql);
 		if(mysql_num_rows($result) == 0) {
 			echo("<div class=\"mensaje\">Usted no tiene ninguna oferta pendiente</div>");
 		}
 		else {
 ?>
+
+<script type="text/javascript">
+	var a = document.getElementById("ofertas");
+	a.className = "active";
+</script>
 
 <?php if(isset($_POST["msj_exito"])) {?> <div class="exito"> <?php echo $_POST["msj_exito"]; ?> </div> <?php } ?>
 <?php if(isset($_POST["msj_mensaje"])) {?> <div class="mensaje"> <?php echo $_POST["msj_mensaje"]; ?> </div> <?php } ?>
@@ -77,7 +83,8 @@ Motivo
 		INNER JOIN imagen i ON s.id_imagen = i.id_imagen
 		WHERE o.nombre_usuario = '".$_SESSION["nombre_usuario"]."'
 		AND s.fecha_fin <= NOW()
-		AND eliminado IS NULL";
+		AND eliminado IS NULL
+		ORDER BY o.fecha desc";
 		$result=mysql_query($sql);
 		if(mysql_num_rows($result) == 0) {
 			echo("<div class=\"mensaje\">Usted no tiene ofertas finalizadas</div>");
